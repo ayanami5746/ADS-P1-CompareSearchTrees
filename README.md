@@ -87,10 +87,6 @@ CSV 字段：`tree,scenario,n,repeat,seed,insert_seconds,delete_seconds,total_se
 
 快速检查：`./build/benchmark.exe --max-n 1000 --repeats 1 --output build/smoke.csv`。`--max-n` 是默认规模列表的上界，不会额外创建新规模。
 
-## 注释比例
-
-`tools/check_comments.py` 对 `include/`、`src/`、`tests/` 的每个 `.c/.h` 文件分别要求保持在 32%–35%（含边界）。按用户指定口径：**包含真实 C 注释的物理行 / 所有物理行（含空白行）**。独立注释、行尾注释、块注释起止符和块内行都计入，每行最多计一次；字符串或字符字面量里的 `//`、`/*` 不算注释。注释解释算法不变量、前置条件、边界情况和测试意图。
-
 ## 文件组织
 
 - `src/trees.c`、`include/trees.h`：五种树及统一接口。
