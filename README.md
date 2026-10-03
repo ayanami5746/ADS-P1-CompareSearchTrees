@@ -93,3 +93,7 @@ CSV 字段：`tree,scenario,n,repeat,seed,insert_seconds,delete_seconds,total_se
 - `tests/test_trees.c`：正确性与压力测试。
 - `tools/`：辅助工具与绘图；`results/`：实测数据及交付给报告同学的材料。
 - `.github/workflows/ci.yml`：持续编译、测试和内存检查。
+
+## 独立性能对比图
+
+[performance_charts](performance_charts/README.md) 单独保存三种 case 的插入、删除和总耗时对比图，共九张独立图和一张总览，均提供 PNG 与 SVG。采用现有实测数据的三次重复中位数；原始数据、绘图数值和复现方法也保存在该文件夹。
