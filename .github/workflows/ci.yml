@@ -1,0 +1,17 @@
+name: C correctness and comment coverage
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict C11 build and correctness tests
+        run: make test
+      - name: Compile benchmark
+        run: make all
+      - name: Check comment ratio
+        run: python3 tools/check_comments.py
+      - name: Address, undefined-behavior, and leak checks
+        run: make sanitize
+      - name: Benchmark smoke test
+        run: ./build/benchmark --max-n 1000 --repeats 1 --output build/smoke.csv
