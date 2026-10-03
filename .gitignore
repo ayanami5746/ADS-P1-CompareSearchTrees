@@ -1,4 +1,4 @@
 build/
 __pycache__/
 *.pyc
-benchmark.csv
+/benchmark.csv

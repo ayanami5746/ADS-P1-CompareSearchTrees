@@ -37,7 +37,7 @@ def main():
     # Shared colors make each implementation identifiable in all nine panels.
     colors = dict(zip(names, plt.get_cmap("tab10").colors[:5]))
     fig, axes = plt.subplots(3, 3, figsize=(16, 12))
-    fig.subplots_adjust(left=0.07, right=0.985, bottom=0.055, top=0.90, wspace=0.28, hspace=0.40)
+    fig.subplots_adjust(left=0.07, right=0.985, bottom=0.055, top=0.86, wspace=0.28, hspace=0.40)
     for row, scenario in enumerate(scenarios):
         for col, metric in enumerate(metrics):
             ax = axes[row, col]
