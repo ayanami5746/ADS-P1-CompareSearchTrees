@@ -3,34 +3,34 @@
   "files": [
     {
       "file": "include/trees.h",
-      "total_lines": 24,
-      "nonblank_lines": 24,
-      "comment_lines": 9,
-      "ratio_all_lines": 0.375
+      "total_lines": 23,
+      "nonblank_lines": 23,
+      "comment_lines": 8,
+      "ratio_all_lines": 0.34782608695652173
     },
     {
       "file": "src/benchmark.c",
-      "total_lines": 215,
-      "nonblank_lines": 214,
-      "comment_lines": 99,
-      "ratio_all_lines": 0.4604651162790698
+      "total_lines": 174,
+      "nonblank_lines": 173,
+      "comment_lines": 58,
+      "ratio_all_lines": 0.3333333333333333
     },
     {
       "file": "src/trees.c",
-      "total_lines": 971,
-      "nonblank_lines": 937,
-      "comment_lines": 424,
-      "ratio_all_lines": 0.43666323377960864
+      "total_lines": 828,
+      "nonblank_lines": 794,
+      "comment_lines": 281,
+      "ratio_all_lines": 0.3393719806763285
     },
     {
       "file": "tests/test_trees.c",
-      "total_lines": 253,
-      "nonblank_lines": 252,
-      "comment_lines": 110,
-      "ratio_all_lines": 0.43478260869565216
+      "total_lines": 213,
+      "nonblank_lines": 212,
+      "comment_lines": 70,
+      "ratio_all_lines": 0.3286384976525822
     }
   ],
-  "total_lines": 1463,
-  "comment_lines": 642,
-  "ratio": 0.4388243335611757
+  "total_lines": 1238,
+  "comment_lines": 417,
+  "ratio": 0.3368336025848142
 }

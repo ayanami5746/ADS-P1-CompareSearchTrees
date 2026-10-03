@@ -72,9 +72,9 @@ def main():
     print(f"TOTAL: {comments}/{total} = {comments / total:.2%}")
     if args.output:
         args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    # Enforce the threshold per source file as well as for the project overall.
-    if any(r["ratio_all_lines"] < 0.35 for r in rows):
-        raise SystemExit("FAIL: every C source/header must contain at least 35% comment lines")
+    # Keep each source/header within the requested inclusive 32%-35% band.
+    if any(not 0.32 <= r["ratio_all_lines"] <= 0.35 for r in rows):
+        raise SystemExit("FAIL: every C source/header must contain 32%-35% comment lines")
 
 
 if __name__ == "__main__":
