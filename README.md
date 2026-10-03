@@ -1,12 +1,14 @@
 # ADS-P1-CompareSearchTrees
 
-本仓库负责项目的 **C 语言实现、正确性测试及性能实验**，不包含课程报告正文。
+本仓库用于小组协作完成 **搜索树实现与性能比较** 课程项目，统一管理代码、测试、实验数据、图表及报告材料。
+
+当前已提供五种搜索树的 C 语言实现、自动化测试和性能实验工具。后续小组成员可在此基础上共同完善实现、分析实验结果并撰写项目报告。
 
 ## 代码结构与阅读顺序
 
-恢复算法库 + 独立正确性测试 + 独立性能实验结构，不提供交互式 main 或手动输入菜单。`main()` 仅保留在 `tests/test_trees.c` 和 `src/benchmark.c` 两个可执行程序中。
+项目采用算法库、独立正确性测试和独立性能实验程序的结构。`main()` 仅保留在 `tests/test_trees.c` 和 `src/benchmark.c` 两个可执行程序中。
 
-算法继续集中在 `src/trees.c`，按以下十个明确分区组织，便于课程阅读与提交：
+算法集中在 `src/trees.c`，按以下十个明确分区组织，便于课程阅读与提交：
 
 | 分区 | 职责 |
 |---|---|
@@ -37,7 +39,7 @@
 | Red-black | 左倾红黑树（LLRB），属于红黑树的一种实现 |
 | B+ | 16 阶：内部节点最多 16 个孩子，叶子最多 15 条记录，叶子链连接 |
 
-统一接口位于 `include/trees.h`。集合接受完整 `int` 范围；重复插入与不存在的删除返回 `false`，不改变元素集合。有效树对象必须由 `tree_create` 创建；除 `tree_destroy(NULL)` 外，接口要求传入非空有效对象。内存不足打印错误并退出。底层算法和测试均为 C11；Python 用于辅助工具和绘图。实现以题目截图的五种树和三种序列要求为依据；未提供的课程专用命名、文件结构或评分规则不作假设。
+统一接口位于 `include/trees.h`。集合接受完整 `int` 范围；重复插入与不存在的删除返回 `false`，不改变元素集合。有效树对象必须由 `tree_create` 创建；除 `tree_destroy(NULL)` 外，接口要求传入非空有效对象。内存不足打印错误并退出。底层算法和测试均为 C11；Python 用于辅助工具和绘图。实现覆盖课程要求的五种搜索树和三种插入、删除序列。
 
 ## Windows 编译与测试
 
@@ -82,7 +84,7 @@ python tools/plot_results.py results/benchmark.csv --output-dir results
 
 计时器在 Windows 为 QueryPerformanceCounter，POSIX 为 CLOCK_MONOTONIC。分别计时全部插入、全部删除，同时记录二者之和。计时包含算法正常的节点分配/释放及操作返回值累计；不包含输入生成、结构验证、CSV 输出、最终树销毁。插入后的校验会访问节点、影响缓存状态，这是所有树一致采用的实验约定。没有额外预热；短耗时结果需要结合重复波动解释，不能作为硬件无关的结论。
 
-CSV 字段：`tree,scenario,n,repeat,seed,insert_seconds,delete_seconds,total_seconds`。绘图脚本生成 `summary.csv` 和 PNG/SVG 九宫格曲线，行对应三种序列，列对应插入/删除/总时间；双对数坐标，中位数曲线与 min/max 阴影。原始测量不做拟合替换。报告同学可直接复用数据和图片，并参考 `results/VALIDATION.md` 中的实际运行环境与验证记录。
+CSV 字段：`tree,scenario,n,repeat,seed,insert_seconds,delete_seconds,total_seconds`。绘图脚本生成 `summary.csv` 和 PNG/SVG 九宫格曲线，行对应三种序列，列对应插入/删除/总时间；双对数坐标，中位数曲线与 min/max 阴影。原始测量不做拟合替换。小组成员分析结果或撰写报告时，可直接复用数据和图片，并参考 `results/VALIDATION.md` 中的实际运行环境与验证记录。
 
 快速检查：`./build/benchmark.exe --max-n 1000 --repeats 1 --output build/smoke.csv`。`--max-n` 是默认规模列表的上界，不会额外创建新规模。
 
@@ -91,7 +93,7 @@ CSV 字段：`tree,scenario,n,repeat,seed,insert_seconds,delete_seconds,total_se
 - `src/trees.c`、`include/trees.h`：五种树及统一接口。
 - `src/benchmark.c`：确定性实验输入与计时输出。
 - `tests/test_trees.c`：正确性与压力测试。
-- `tools/`：辅助工具与绘图；`results/`：实测数据及交付给报告同学的材料。
+- `tools/`：辅助工具与绘图；`results/`：共享实验数据、图表及验证记录。
 - `.github/workflows/ci.yml`：持续编译、测试和内存检查。
 
 ## 独立性能对比图
