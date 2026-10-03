@@ -2,6 +2,33 @@
 
 本仓库负责项目的 **C 语言实现、正确性测试及性能实验**，不包含课程报告正文。
 
+## 手动运行：带 main() 的交互程序
+
+`src/main.c` 是清晰独立的程序入口，流程是创建五棵空树 → 选择树 → 菜单操作 → 释放内存。算法保留在 `src/trees.c`，便于阅读与独立测试。
+
+在项目目录运行：
+
+```powershell
+./build.ps1
+./build/search_trees.exe
+```
+
+也可以直接编译，不需要 Python：
+
+```powershell
+New-Item -ItemType Directory -Force build
+gcc -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror -Iinclude src/main.c src/trees.c -o build/search_trees.exe
+./build/search_trees.exe
+```
+
+Linux/macOS 使用 `make all` 后运行 `./build/search_trees`。
+
+启动时输入树编号：1=BST、2=AVL、3=Splay、4=RedBlack、5=BPlus。随后菜单为：1=插入、2=删除、3=查询、4=元素数量、5=检查结构、6=切换树、0=退出。插入、删除、查询会另外提示输入键；**每行输入一个整数**，不要把命令和键写在同一行。
+
+例如依次输入 `2`、`1`、`10`、`3`、`10`、`0`（每项一行），就是选择 AVL、插入 10、查询 10、退出。五棵树各自维护独立集合，切换后数据仍保留。重复键、删除不存在的键、非法文本、越界整数、超长行都有提示；输入结束时自动释放所有树并退出。控制台使用英文提示，避免不同 Windows 终端编码导致乱码。
+
+交互回归检查：`python tests/test_interactive.py`，覆盖所有树的菜单操作、独立集合切换、异常输入、整数边界、EOF，以及注释统计口径。
+
 ## 实现范围
 
 | 搜索树 | 实现选择 |
@@ -64,11 +91,12 @@ CSV 字段：`tree,scenario,n,repeat,seed,insert_seconds,delete_seconds,total_se
 
 ## 注释比例
 
-`tools/check_comments.py` 对 `include/`、`src/`、`tests/` 的每个 `.c/.h` 文件分别强制 ≥35%。采用更严格的口径：**有实质文本且不混有代码的注释物理行 / 所有物理行（含空白行）**。独立注释起止符、空白行、代码行末注释均不计入分子，字符串内的 `//` 或 `/*` 也不算注释。注释解释算法不变量、前置条件、边界情况和测试意图。
+`tools/check_comments.py` 对 `include/`、`src/`、`tests/` 的每个 `.c/.h` 文件分别强制 ≥35%。按用户指定口径：**包含真实 C 注释的物理行 / 所有物理行（含空白行）**。独立注释、行尾注释、块注释起止符和块内行都计入，每行最多计一次；字符串或字符字面量里的 `//`、`/*` 不算注释。注释解释算法不变量、前置条件、边界情况和测试意图。
 
 ## 文件组织
 
 - `src/trees.c`、`include/trees.h`：五种树及统一接口。
+- `src/main.c`：带 `main()` 的交互入口，生成 `build/search_trees.exe`。
 - `src/benchmark.c`：确定性实验输入与计时输出。
 - `tests/test_trees.c`：正确性与压力测试。
 - `tools/`：注释审计、绘图；`results/`：实测数据及交付给报告同学的材料。

@@ -3,10 +3,13 @@ CFLAGS = -std=c11 -O2 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Werror
 CPPFLAGS = -Iinclude
 
 .PHONY: all test stress comments clean sanitize
-all: build/test_trees build/benchmark
+all: build/search_trees build/test_trees build/benchmark
 
 build:
 	mkdir -p build
+
+build/search_trees: src/trees.c src/main.c include/trees.h | build
+	$(CC) $(CPPFLAGS) $(CFLAGS) src/trees.c src/main.c -o $@
 
 build/test_trees: src/trees.c tests/test_trees.c include/trees.h | build
 	$(CC) $(CPPFLAGS) $(CFLAGS) src/trees.c tests/test_trees.c -o $@

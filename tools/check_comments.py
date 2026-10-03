@@ -8,11 +8,12 @@ def measure(path):
     text = path.read_text(encoding="utf-8")
     lines = text.splitlines()
     comment_lines = set()
-    code_lines = set()
     state, escaped, line, i = "code", False, 0, 0
     while i < len(text):
         c = text[i]
         pair = text[i:i + 2]
+        if state in ("block", "line"):
+            comment_lines.add(line)
         if c == "\n":
             line += 1
             if state == "line":
@@ -21,14 +22,11 @@ def measure(path):
             i += 1
             continue
         if state in ("block", "line"):
-            if c.strip():
-                comment_lines.add(line)
             if state == "block" and pair == "*/":
                 state = "code"
                 i += 2
                 continue
         elif state in ("string", "char"):
-            code_lines.add(line)
             if escaped:
                 escaped = False
             elif c == "\\":
@@ -41,21 +39,18 @@ def measure(path):
             i += 2
             continue
         else:
-            if c.strip():
-                code_lines.add(line)
             if c == '"':
                 state = "string"
             elif c == "'":
                 state = "char"
         i += 1
-    # Count only standalone substantive comment lines: mixed lines get no credit.
-    only = comment_lines - code_lines
-    substantive = {i for i in only if lines[i].strip().strip("/* ").strip()}
+    # A physical line counts once if any part belongs to a real C comment.
+    # Include trailing comments and block delimiters; ignore markers in literals.
     total = len(lines)
     return {"file": path.as_posix(), "total_lines": total,
             "nonblank_lines": sum(bool(s.strip()) for s in lines),
-            "comment_only_lines": len(substantive),
-            "ratio_all_lines": len(substantive) / total if total else 0}
+            "comment_lines": len(comment_lines),
+            "ratio_all_lines": len(comment_lines) / total if total else 0}
 
 
 def main():
@@ -68,12 +63,12 @@ def main():
         raise SystemExit("No C sources found; run from the repository root.")
     rows = [measure(p) for p in files]
     total = sum(r["total_lines"] for r in rows)
-    comments = sum(r["comment_only_lines"] for r in rows)
-    report = {"definition": "substantive comment-only physical lines / all physical lines (including blanks)",
-              "files": rows, "total_lines": total, "comment_only_lines": comments,
+    comments = sum(r["comment_lines"] for r in rows)
+    report = {"definition": "physical lines containing C comments (including inline comments and block delimiters) / all physical lines",
+              "files": rows, "total_lines": total, "comment_lines": comments,
               "ratio": comments / total}
     for r in rows:
-        print(f'{r["file"]}: {r["comment_only_lines"]}/{r["total_lines"]} = {r["ratio_all_lines"]:.2%}')
+        print(f'{r["file"]}: {r["comment_lines"]}/{r["total_lines"]} = {r["ratio_all_lines"]:.2%}')
     print(f"TOTAL: {comments}/{total} = {comments / total:.2%}")
     if args.output:
         args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

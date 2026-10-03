@@ -11,6 +11,8 @@ jobs:
         run: make all
       - name: Check comment ratio
         run: python3 tools/check_comments.py
+      - name: Interactive input and comment counter tests
+        run: python3 tests/test_interactive.py
       - name: Address, undefined-behavior, and leak checks
         run: make sanitize
       - name: Benchmark smoke test
