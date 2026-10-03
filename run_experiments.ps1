@@ -18,8 +18,8 @@ try {
     if ($Stress) { $testArguments += '--stress' }
     & ./build/test_trees.exe @testArguments | Tee-Object results/correctness.log
     if ($LASTEXITCODE -ne 0) { throw 'Correctness tests failed' }
-    & python tests/test_interactive.py
-    if ($LASTEXITCODE -ne 0) { throw 'Interactive input tests failed' }
+    & python tests/test_comments.py
+    if ($LASTEXITCODE -ne 0) { throw 'Comment counter tests failed' }
     & python tools/check_comments.py --output results/comment_coverage.json | Tee-Object results/comments.log
     if ($LASTEXITCODE -ne 0) { throw 'Comment coverage failed' }
     & ./build/benchmark.exe --output results/benchmark.csv --repeats $Repeats --max-n $MaxN --seed $Seed 2> results/benchmark.log

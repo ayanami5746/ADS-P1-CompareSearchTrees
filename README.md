@@ -2,32 +2,30 @@
 
 本仓库负责项目的 **C 语言实现、正确性测试及性能实验**，不包含课程报告正文。
 
-## 手动运行：带 main() 的交互程序
+## 代码结构与阅读顺序
 
-`src/main.c` 是清晰独立的程序入口，流程是创建五棵空树 → 选择树 → 菜单操作 → 释放内存。算法保留在 `src/trees.c`，便于阅读与独立测试。
+恢复算法库 + 独立正确性测试 + 独立性能实验结构，不提供交互式 main 或手动输入菜单。`main()` 仅保留在 `tests/test_trees.c` 和 `src/benchmark.c` 两个可执行程序中。
 
-在项目目录运行：
+算法继续集中在 `src/trees.c`，按以下十个明确分区组织，便于课程阅读与提交：
 
-```powershell
-./build.ps1
-./build/search_trees.exe
-```
+| 分区 | 职责 |
+|---|---|
+| 1. Data structures | 二叉节点、B+ 页、Tree 的数据结构及字段含义 |
+| 2. Shared binary-tree primitives | 内存分配、旋转、普通二叉查找 |
+| 3. Unbalanced BST | BST 定位、插入、删除 |
+| 4. AVL tree | 高度维护、平衡修复、递归更新 |
+| 5. Splay tree | 伸展、插入和删除后的子树拼接 |
+| 6. Left-leaning red-black tree | 旋转、变色、插入、删除及根颜色处理 |
+| 7. B+ tree | 页内操作、分裂、借位、合并和根变化 |
+| 8. Public API and operation dispatch | 公共接口、按树类型分派、统一更新 size |
+| 9. Structural validation | 各种树的不变量与数量检查 |
+| 10. Memory cleanup | 释放二叉树和 B+ 页 |
 
-也可以直接编译，不需要 Python：
+建议先读 `include/trees.h` 了解接口，再读第 8 区的 `tree_insert()`、`tree_delete()`，最后进入感兴趣的树模块。公共接口使用清晰的 `switch`，每个分支只调用对应算法；具体的节点操作不再混在大型条件分支内。
 
-```powershell
-New-Item -ItemType Directory -Force build
-gcc -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror -Iinclude src/main.c src/trees.c -o build/search_trees.exe
-./build/search_trees.exe
-```
+例如 BST 的插入调用链为 `tree_insert → bst_insert → bst_find_slot/new_node`，成功后由 `tree_insert` 统一增加 size。B+ 的删除调用链为 `tree_delete → bplus_delete → bp_delete → repair_child`，页修复和根收缩分别在对应层完成。
 
-Linux/macOS 使用 `make all` 后运行 `./build/search_trees`。
-
-启动时输入树编号：1=BST、2=AVL、3=Splay、4=RedBlack、5=BPlus。随后菜单为：1=插入、2=删除、3=查询、4=元素数量、5=检查结构、6=切换树、0=退出。插入、删除、查询会另外提示输入键；**每行输入一个整数**，不要把命令和键写在同一行。
-
-例如依次输入 `2`、`1`、`10`、`3`、`10`、`0`（每项一行），就是选择 AVL、插入 10、查询 10、退出。五棵树各自维护独立集合，切换后数据仍保留。重复键、删除不存在的键、非法文本、越界整数、超长行都有提示；输入结束时自动释放所有树并退出。控制台使用英文提示，避免不同 Windows 终端编码导致乱码。
-
-交互回归检查：`python tests/test_interactive.py`，覆盖所有树的菜单操作、独立集合切换、异常输入、整数边界、EOF，以及注释统计口径。
+所有算法函数保持文件内 `static`，外部仍只使用 `trees.h` 中的公共接口。BST、Splay 及 B+ 的包装函数负责结构变化；元素总数只由公共更新接口修改，避免重复计数。
 
 ## 实现范围
 
@@ -96,8 +94,7 @@ CSV 字段：`tree,scenario,n,repeat,seed,insert_seconds,delete_seconds,total_se
 ## 文件组织
 
 - `src/trees.c`、`include/trees.h`：五种树及统一接口。
-- `src/main.c`：带 `main()` 的交互入口，生成 `build/search_trees.exe`。
 - `src/benchmark.c`：确定性实验输入与计时输出。
-- `tests/test_trees.c`：正确性与压力测试。
+- `tests/test_trees.c`：正确性与压力测试；`tests/test_comments.py`：独立注释统计回归检查。
 - `tools/`：注释审计、绘图；`results/`：实测数据及交付给报告同学的材料。
 - `.github/workflows/ci.yml`：持续编译、测试、注释比例和内存检查。

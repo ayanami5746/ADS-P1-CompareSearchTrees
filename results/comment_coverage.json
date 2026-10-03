@@ -16,18 +16,11 @@
       "ratio_all_lines": 0.4604651162790698
     },
     {
-      "file": "src/main.c",
-      "total_lines": 117,
-      "nonblank_lines": 113,
-      "comment_lines": 43,
-      "ratio_all_lines": 0.36752136752136755
-    },
-    {
       "file": "src/trees.c",
-      "total_lines": 852,
-      "nonblank_lines": 845,
-      "comment_lines": 394,
-      "ratio_all_lines": 0.4624413145539906
+      "total_lines": 971,
+      "nonblank_lines": 937,
+      "comment_lines": 424,
+      "ratio_all_lines": 0.43666323377960864
     },
     {
       "file": "tests/test_trees.c",
@@ -37,7 +30,7 @@
       "ratio_all_lines": 0.43478260869565216
     }
   ],
-  "total_lines": 1461,
-  "comment_lines": 655,
-  "ratio": 0.4483230663928816
+  "total_lines": 1463,
+  "comment_lines": 642,
+  "ratio": 0.4388243335611757
 }

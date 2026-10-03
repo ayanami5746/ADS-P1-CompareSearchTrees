@@ -1,14 +1,26 @@
+/* Search-tree library: no application main() belongs in this file.
+ * Reading map: data -> shared primitives -> five algorithms -> public API.
+ * Validation and destruction are separate from timed update operations.
+ * Start at section 8 to understand dispatch, then read the relevant module.
+ * Tests and benchmarks provide their own independent executable entry points.
+ */
 #include "trees.h"
 #include <limits.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 
+
+/* ==================== 1. Data structures ==================== */
+/* Node serves binary trees; Page serves B+ trees; Tree owns the roots. */
+
 /* Binary nodes share storage; height is used by AVL and red by red-black. */
 typedef struct Node {
-    int key, height;
-    bool red;
-    struct Node *left, *right;
+    int key;             /* The integer stored by this node. */
+    int height;          /* Cached AVL height; unused for ordering. */
+    bool red;            /* Link color used only by the red-black tree. */
+    struct Node *left;   /* All descendant keys are smaller. */
+    struct Node *right;  /* All descendant keys are larger. */
 } Node;
 /* B+ order means maximum children; leaves hold at most ORDER-1 records. */
 #define ORDER 16
@@ -16,18 +28,23 @@ typedef struct Node {
 #define INNER_MIN (ORDER / 2)
 /* One extra slot lets insertion temporarily overflow before splitting. */
 typedef struct Page {
-    bool leaf;
-    int n, minimum;
+    bool leaf;           /* Distinguish record pages from routing pages. */
+    int n;               /* Leaf: record count. Internal: child count. */
+    int minimum;         /* Smallest record reachable from this page. */
     int keys[ORDER];
-    struct Page *child[ORDER + 1], *next;
+    struct Page *child[ORDER + 1]; /* Include a temporary overflow slot. */
+    struct Page *next;            /* Ordered leaf link; not an owning pointer. */
 } Page;
 /* For an internal page, n counts children and keys[i] = child[i+1].minimum. */
 struct Tree {
-    TreeKind kind;
-    size_t size;
-    Node *root;
-    Page *page;
+    TreeKind kind;       /* Select the algorithm at the public API boundary. */
+    size_t size;         /* Count distinct records, not B+ separator copies. */
+    Node *root;          /* Root for the four binary-tree implementations. */
+    Page *page;          /* Root for B+; unused for binary trees. */
 };
+
+/* ==================== 2. Shared binary-tree primitives ==================== */
+/* Allocation, rotations and ordinary lookup do not choose a tree kind. */
 
 /* Centralized checked allocation avoids returning partially updated trees. */
 /*
@@ -111,6 +128,64 @@ static Node *rotate_right(Node *p) {
     fix_height(p); fix_height(q);
     return q;
 }
+/* A failed lookup in a binary tree needs no allocation or sentinel key. */
+/*
+ * Perform an ordinary iterative binary search for an exact key.
+ * The helper does not splay, rotate, recolor, or allocate.
+ * It is also used to establish RB deletion's membership precondition.
+ * An empty subtree immediately reports absence.
+ * Equality stops the search before following another link.
+ * The work is proportional to the actual search-path height.
+ * No assumptions about key spacing or key sign are needed.
+ */
+static bool binary_contains(Node *p, int k) {
+    while (p && p->key != k) p = k < p->key ? p->left : p->right;
+    return p != NULL;
+}
+
+/* ==================== 3. Unbalanced BST ==================== */
+/* Iterative search, insertion and successor-based deletion. */
+
+/* Find the slot that owns a key, or the null slot where it belongs. */
+/* Returning a link address makes root and child updates use the same code. */
+static Node **bst_find_slot(Node **root, int key) {
+    Node **slot = root;
+    while (*slot && (*slot)->key != key) {
+        slot = key < (*slot)->key ? &(*slot)->left : &(*slot)->right;
+    }
+    return slot;
+}
+
+/* Plain BST insertion performs no balancing or sorted-input shortcut. */
+static bool bst_insert(Tree *tree, int key) {
+    Node **slot = bst_find_slot(&tree->root, key);
+    if (*slot) return false; /* A duplicate must not allocate a second record. */
+    *slot = new_node(key);
+    return true;
+}
+
+/* Unlink exactly one node; the public interface updates the record count. */
+static bool bst_delete(Tree *tree, int key) {
+    Node **slot = bst_find_slot(&tree->root, key);
+    if (!*slot) return false;
+    Node *node = *slot;
+    if (node->left && node->right) {
+        /* Copy the successor key, then remove the successor at its own slot. */
+        Node **successor = &node->right;
+        while ((*successor)->left) successor = &(*successor)->left;
+        node->key = (*successor)->key;
+        slot = successor;
+        node = *slot;
+    }
+    /* At this point the physically removed node has at most one child. */
+    *slot = node->left ? node->left : node->right;
+    free(node);
+    return true;
+}
+
+/* ==================== 4. AVL tree ==================== */
+/* Recursive updates restore heights and balance while unwinding. */
+
 /* AVL repairs the first unbalanced direction, including a double rotation. */
 /*
  * Restore the AVL invariant at a single changed subtree root.
@@ -180,6 +255,9 @@ static Node *avl_delete(Node *p, int k, bool *changed) {
     return balance(p);
 }
 
+/* ==================== 5. Splay tree ==================== */
+/* Top-down splaying partitions the tree before insertion or deletion. */
+
 /* Top-down splaying uses two temporary chains and constant auxiliary space. */
 /*
  * Move a matching key, or the last accessed boundary, to the root.
@@ -212,6 +290,46 @@ static Node *splay(Node *p, int k) {
     p->left = dummy.right; p->right = dummy.left;
     return p;
 }
+
+
+/* Expose the search boundary before attaching a new root. */
+static bool splay_insert(Tree *tree, int key) {
+    tree->root = splay(tree->root, key);
+    if (tree->root && tree->root->key == key) return false;
+    Node *node = new_node(key);
+    if (tree->root && key < tree->root->key) {
+        /* The smaller partition becomes the new root's left subtree. */
+        node->left = tree->root->left;
+        node->right = tree->root;
+        tree->root->left = NULL;
+    } else if (tree->root) {
+        /* The larger partition becomes the new root's right subtree. */
+        node->right = tree->root->right;
+        node->left = tree->root;
+        tree->root->right = NULL;
+    }
+    tree->root = node;
+    return true;
+}
+
+/* Remove the exposed root and join the two surviving ordered partitions. */
+static bool splay_delete(Tree *tree, int key) {
+    tree->root = splay(tree->root, key);
+    if (!tree->root || tree->root->key != key) return false;
+    Node *removed = tree->root;
+    if (!removed->left) {
+        tree->root = removed->right;
+    } else {
+        /* key exceeds every key on the left, so its maximum becomes root. */
+        tree->root = splay(removed->left, key);
+        tree->root->right = removed->right;
+    }
+    free(removed);
+    return true;
+}
+
+/* ==================== 6. Left-leaning red-black tree ==================== */
+/* Rotations and color transfers preserve the black-height invariant. */
 
 /* Left-leaning red-black trees are a standard red-black-tree variant. */
 /*
@@ -365,6 +483,22 @@ static Node *rb_delete(Node *p, int k) {
     }
     return rb_fix(p);
 }
+
+
+/* Keep root-color setup and membership preconditions inside the RB module. */
+static bool rb_remove_key(Tree *tree, int key) {
+    if (!binary_contains(tree->root, key)) return false;
+    /* A red root supplies the first top-down color redistribution step. */
+    if (!red(tree->root->left) && !red(tree->root->right)) {
+        tree->root->red = true;
+    }
+    tree->root = rb_delete(tree->root, key);
+    if (tree->root) tree->root->red = false;
+    return true;
+}
+
+/* ==================== 7. B+ tree ==================== */
+/* Page algorithms handle local repair; wrappers handle root changes. */
 
 /* B+ records exist only in leaves; internal keys are routing copies. */
 /*
@@ -527,20 +661,54 @@ static bool bp_delete(Page *p, int k) {
     return true;
 }
 
-/* A failed lookup in a binary tree needs no allocation or sentinel key. */
-/*
- * Perform an ordinary iterative binary search for an exact key.
- * The helper does not splay, rotate, recolor, or allocate.
- * It is also used to establish RB deletion's membership precondition.
- * An empty subtree immediately reports absence.
- * Equality stops the search before following another link.
- * The work is proportional to the actual search-path height.
- * No assumptions about key spacing or key sign are needed.
- */
-static bool binary_contains(Node *p, int k) {
-    while (p && p->key != k) p = k < p->key ? p->left : p->right;
-    return p != NULL;
+
+/* Routing copies never count as records: membership is decided at a leaf. */
+static bool bplus_contains(const Tree *tree, int key) {
+    Page *page = tree->page;
+    while (page && !page->leaf) page = page->child[route(page, key)];
+    if (!page) return false;
+    for (int i = 0; i < page->n; ++i) {
+        if (page->keys[i] == key) return true;
+    }
+    return false;
 }
+
+/* This wrapper owns root creation; bp_insert owns recursive page splitting. */
+static bool bplus_insert(Tree *tree, int key) {
+    bool changed = false;
+    if (!tree->page) tree->page = new_page(true);
+    Page *sibling = bp_insert(tree->page, key, &changed);
+    if (sibling) {
+        /* Only splitting the old root increases the tree height. */
+        Page *root = new_page(false);
+        root->n = 2;
+        root->child[0] = tree->page;
+        root->child[1] = sibling;
+        refresh(root);
+        tree->page = root;
+    }
+    return changed;
+}
+
+/* Root occupancy has special rules that do not belong in recursive repair. */
+static bool bplus_delete(Tree *tree, int key) {
+    if (!tree->page) return false;
+    bool changed = bp_delete(tree->page, key);
+    if (!tree->page->leaf && tree->page->n == 1) {
+        Page *old_root = tree->page;
+        tree->page = old_root->child[0];
+        free(old_root); /* The sole child replaces an unnecessary root level. */
+    }
+    if (tree->page->leaf && tree->page->n == 0) {
+        free(tree->page);
+        tree->page = NULL; /* Empty trees use the same state as new trees. */
+    }
+    return changed;
+}
+
+/* ==================== 8. Public API and operation dispatch ==================== */
+/* This layer owns kind selection and distinct-record counting. */
+
 /*
  * Create an empty set of the requested implementation kind.
  * An out-of-range kind returns NULL rather than creating invalid state.
@@ -574,128 +742,75 @@ const char *tree_name(TreeKind kind) {
  * Reading this maintained counter takes constant time.
  */
 size_t tree_size(const Tree *t) { return t->size; }
-/*
- * Check membership using the selected implementation's search rules.
- * The tree pointer must refer to a live object from tree_create.
- * B+ lookup follows internal separators then examines one leaf.
- * Binary implementations follow strict less-than/greater-than order.
- * Splay lookup intentionally changes the shape on success or failure.
- * Membership lookup never changes the set size.
- * The return value is true exactly when the record exists.
- */
-bool tree_contains(Tree *t, int k) {
-    if (t->kind == TREE_BPLUS) {
-        Page *p = t->page;
-        while (p && !p->leaf) p = p->child[route(p, k)];
-        if (!p) return false;
-        for (int i = 0; i < p->n; ++i) if (p->keys[i] == k) return true;
-        return false;
+/* Public operations dispatch by kind; balancing stays in the modules above. */
+/* Querying a splay tree may rearrange its nodes without changing membership. */
+bool tree_contains(Tree *tree, int key) {
+    switch (tree->kind) {
+        case TREE_BPLUS:
+            return bplus_contains(tree, key);
+        case TREE_SPLAY:
+            tree->root = splay(tree->root, key);
+            return binary_contains(tree->root, key);
+        default:
+            return binary_contains(tree->root, key);
     }
-    /* Access itself is part of the splay-tree algorithm. */
-    if (t->kind == TREE_SPLAY) t->root = splay(t->root, k);
-    return binary_contains(t->root, k);
 }
-/*
- * Insert one key and report whether the distinct-key set grew.
- * The maintained size increments only after a successful insertion.
- * Each implementation owns all nodes or pages it allocates.
- * BST follows the entire search path even for monotonic inputs.
- * Splay insertion makes the new key the root of the partitioned tree.
- * AVL and RB install the possibly rotated root returned by recursion.
- * B+ insertion handles a root split as the only height-increase case.
- */
-bool tree_insert(Tree *t, int k) {
+
+/* All implementations report success; only this layer increments size. */
+bool tree_insert(Tree *tree, int key) {
     bool changed = false;
-    if (t->kind == TREE_BST) {
-        Node **link = &t->root;
-        /* Pointer-to-pointer traversal handles the root without a special case. */
-        while (*link && (*link)->key != k)
-            link = k < (*link)->key ? &(*link)->left : &(*link)->right;
-        if (!*link) { *link = new_node(k); changed = true; }
-    } else if (t->kind == TREE_AVL) t->root = avl_insert(t->root, k, &changed);
-    else if (t->kind == TREE_RB) {
-        t->root = rb_insert(t->root, k, &changed); t->root->red = false;
-    } else if (t->kind == TREE_SPLAY) {
-        t->root = splay(t->root, k);
-        if (!t->root || t->root->key != k) {
-            Node *q = new_node(k);
-            /* Splaying partitions the old tree around the new key. */
-            if (t->root && k < t->root->key) {
-                q->left = t->root->left; q->right = t->root; t->root->left = NULL;
-            } else if (t->root) {
-                q->right = t->root->right; q->left = t->root; t->root->right = NULL;
-            }
-            t->root = q; changed = true;
-        }
-    } else {
-        if (!t->page) t->page = new_page(true);
-        Page *q = bp_insert(t->page, k, &changed);
-        if (q) {
-            /* Only a root split increases B+ height. */
-            Page *p = new_page(false); p->n = 2;
-            p->child[0] = t->page; p->child[1] = q; refresh(p); t->page = p;
-        }
+    switch (tree->kind) {
+        case TREE_BST:
+            changed = bst_insert(tree, key);
+            break;
+        case TREE_AVL:
+            tree->root = avl_insert(tree->root, key, &changed);
+            break;
+        case TREE_SPLAY:
+            changed = splay_insert(tree, key);
+            break;
+        case TREE_RB:
+            tree->root = rb_insert(tree->root, key, &changed);
+            tree->root->red = false; /* The external root is always black. */
+            break;
+        case TREE_BPLUS:
+            changed = bplus_insert(tree, key);
+            break;
+        default:
+            return false; /* Valid handles never carry an unknown kind. */
     }
-    if (changed) ++t->size;
+    if (changed) ++tree->size;
     return changed;
 }
-/*
- * Delete one key and report whether the distinct-key set shrank.
- * An absent key must never decrement the maintained size.
- * BST physically removes a node after any successor-key replacement.
- * AVL handles successor replacement within its recursive helper.
- * RB checks membership before entering its top-down delete routine.
- * Splay deletion joins the surviving left and right partitions.
- * B+ deletion collapses a single-child root and removes an empty leaf.
- * No implementation rebuilds the whole tree to perform deletion.
- */
-bool tree_delete(Tree *t, int k) {
+
+/* Keeping the size update here prevents double counting successor removal. */
+bool tree_delete(Tree *tree, int key) {
     bool changed = false;
-    if (t->kind == TREE_BST) {
-        Node **link = &t->root;
-        while (*link && (*link)->key != k)
-            link = k < (*link)->key ? &(*link)->left : &(*link)->right;
-        if (*link) {
-            Node *p = *link;
-            /* Two-child removal splices the successor out of its original slot. */
-            if (p->left && p->right) {
-                Node **next = &p->right;
-                while ((*next)->left) next = &(*next)->left;
-                p->key = (*next)->key; link = next; p = *link;
-            }
-            *link = p->left ? p->left : p->right; free(p); changed = true;
-        }
-    } else if (t->kind == TREE_AVL) t->root = avl_delete(t->root, k, &changed);
-    else if (t->kind == TREE_RB) {
-        if (binary_contains(t->root, k)) {
-            /* A temporarily red root allows top-down color redistribution. */
-            if (!red(t->root->left) && !red(t->root->right)) t->root->red = true;
-            t->root = rb_delete(t->root, k);
-            if (t->root) t->root->red = false;
-            changed = true;
-        }
-    } else if (t->kind == TREE_SPLAY) {
-        t->root = splay(t->root, k);
-        if (t->root && t->root->key == k) {
-            Node *p = t->root;
-            if (!p->left) t->root = p->right;
-            else {
-                /* Splaying an upper bound exposes the left subtree's maximum. */
-                t->root = splay(p->left, k); t->root->right = p->right;
-            }
-            free(p); changed = true;
-        }
-    } else if (t->page) {
-        changed = bp_delete(t->page, k);
-        if (!t->page->leaf && t->page->n == 1) {
-            Page *p = t->page; t->page = p->child[0]; free(p);
-        }
-        /* Keep the empty representation identical to a newly created tree. */
-        if (t->page->leaf && t->page->n == 0) { free(t->page); t->page = NULL; }
+    switch (tree->kind) {
+        case TREE_BST:
+            changed = bst_delete(tree, key);
+            break;
+        case TREE_AVL:
+            tree->root = avl_delete(tree->root, key, &changed);
+            break;
+        case TREE_SPLAY:
+            changed = splay_delete(tree, key);
+            break;
+        case TREE_RB:
+            changed = rb_remove_key(tree, key);
+            break;
+        case TREE_BPLUS:
+            changed = bplus_delete(tree, key);
+            break;
+        default:
+            return false;
     }
-    if (changed) --t->size;
+    if (changed) --tree->size;
     return changed;
 }
+
+/* ==================== 9. Structural validation ==================== */
+/* Independent checks are used outside benchmark timed regions. */
 
 /* Balanced-tree validation returns computed height and black height. */
 typedef struct { bool ok; int height, black; size_t count; } Check;
@@ -814,6 +929,10 @@ bool tree_validate(const Tree *t) {
     }
     return check_binary(t);
 }
+
+/* ==================== 10. Memory cleanup ==================== */
+/* Binary cleanup is iterative; B+ cleanup follows only owned child links. */
+
 /* B+ depth is logarithmic; page destruction does not follow the leaf chain. */
 /*
  * Release a B+ hierarchy in child-before-parent order.
