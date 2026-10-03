@@ -1,0 +1,36 @@
+{
+  "definition": "substantive comment-only physical lines / all physical lines (including blanks)",
+  "files": [
+    {
+      "file": "include/trees.h",
+      "total_lines": 24,
+      "nonblank_lines": 24,
+      "comment_only_lines": 9,
+      "ratio_all_lines": 0.375
+    },
+    {
+      "file": "src/benchmark.c",
+      "total_lines": 215,
+      "nonblank_lines": 214,
+      "comment_only_lines": 85,
+      "ratio_all_lines": 0.3953488372093023
+    },
+    {
+      "file": "src/trees.c",
+      "total_lines": 852,
+      "nonblank_lines": 845,
+      "comment_only_lines": 316,
+      "ratio_all_lines": 0.37089201877934275
+    },
+    {
+      "file": "tests/test_trees.c",
+      "total_lines": 253,
+      "nonblank_lines": 252,
+      "comment_only_lines": 94,
+      "ratio_all_lines": 0.3715415019762846
+    }
+  ],
+  "total_lines": 1344,
+  "comment_only_lines": 504,
+  "ratio": 0.375
+}

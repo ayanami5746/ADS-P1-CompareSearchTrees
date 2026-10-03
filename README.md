@@ -26,6 +26,15 @@ python tools/check_comments.py --output results/comment_coverage.json
 
 开启 `-std=c11 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Werror -O2`，警告按错误处理。`--stress` 对每种树执行 N=100000 的全部三种序列；普通测试使用 N=5000。非平衡 BST 的有序插入是 O(N²)，逆序删除也可能是 O(N²)，因此压力测试和完整基准需要等待。
 
+正确性测试完整保存在独立文件 `tests/test_trees.c`，性能测试完整保存在独立文件 `src/benchmark.c`，均与 `src/trees.c` 分离。也可以直接编译测试：
+
+```powershell
+gcc -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror -Iinclude src/trees.c tests/test_trees.c -o build/test_trees.exe
+./build/test_trees.exe
+```
+
+首次复现先运行 `python -m pip install -r requirements.txt`，然后运行 `./run_experiments.ps1 -Stress`，一次完成编译、压力测试、注释审计、完整性能实验和绘图。快速复现可用 `./run_experiments.ps1 -MaxN 1000 -Repeats 1`；不需要绘图时附加 `-SkipPlots`。每次运行会更新 `results/` 中同名数据和日志，需保留的旧结果请先复制。
+
 Linux/macOS 可使用 `make test`、`make stress`、`make comments`。支持的 GCC/Clang 环境可运行 `make sanitize`；GitHub Actions 在 Linux 上执行 AddressSanitizer、UndefinedBehaviorSanitizer 和泄漏检测。不要把尚未执行的 CI 配置当作已经通过的测试结果。
 
 ## 正确性验证

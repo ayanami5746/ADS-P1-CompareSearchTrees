@@ -36,7 +36,8 @@ def main():
             writer.writerow([*key, len(values), median(values), min(values), max(values)])
     # Shared colors make each implementation identifiable in all nine panels.
     colors = dict(zip(names, plt.get_cmap("tab10").colors[:5]))
-    fig, axes = plt.subplots(3, 3, figsize=(16, 12), constrained_layout=True)
+    fig, axes = plt.subplots(3, 3, figsize=(16, 12))
+    fig.subplots_adjust(left=0.07, right=0.985, bottom=0.055, top=0.90, wspace=0.28, hspace=0.40)
     for row, scenario in enumerate(scenarios):
         for col, metric in enumerate(metrics):
             ax = axes[row, col]
@@ -51,8 +52,8 @@ def main():
                    title=f'{scenario.replace("_", " ")}\n{metric.replace("_seconds", "")}')
             ax.grid(True, which="both", alpha=0.2)
     handles, labels = axes[0, 0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="outside upper center", ncol=5)
-    fig.suptitle("Search trees: median runtime; shaded range = min/max of repetitions", y=1.04)
+    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 0.955), ncol=5)
+    fig.suptitle("Search trees: median runtime; shaded range = min/max of repetitions", y=0.985)
     for suffix in ("png", "svg"):
         fig.savefig(args.output_dir / f"runtime_comparison.{suffix}", dpi=180, bbox_inches="tight")
     plt.close(fig)

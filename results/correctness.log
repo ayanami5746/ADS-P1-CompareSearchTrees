@@ -1,0 +1,6 @@
+PASS BST: edges, 14400 permutation pairs, 120000 mixed operations, scenarios N=100000
+PASS AVL: edges, 14400 permutation pairs, 120000 mixed operations, scenarios N=100000
+PASS Splay: edges, 14400 permutation pairs, 120000 mixed operations, scenarios N=100000
+PASS RedBlack: edges, 14400 permutation pairs, 120000 mixed operations, scenarios N=100000
+PASS BPlus: edges, 14400 permutation pairs, 120000 mixed operations, scenarios N=100000
+All five tree implementations passed.
