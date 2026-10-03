@@ -99,3 +99,7 @@ CSV 字段：`tree,scenario,n,repeat,seed,insert_seconds,delete_seconds,total_se
 ## 独立性能对比图
 
 [performance_charts](performance_charts/README.md) 单独保存三种 case 的插入、删除和总耗时对比图，共九张独立图和一张总览，均提供 PNG 与 SVG。采用现有实测数据的三次重复中位数；原始数据、绘图数值和复现方法也保存在该文件夹。
+
+## 代码与测试说明图
+
+[代码整体结构](project_diagrams/01_code_structure.png) 展示程序入口、统一接口、五种树实现及运行产物；[测试 Case](project_diagrams/02_test_cases.png) 展示正确性测试、三类操作序列和性能实验规模。两张图均在 project_diagrams/ 中提供 PNG 和 SVG，可用于小组讨论与报告。
