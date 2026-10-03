@@ -37,7 +37,7 @@
 | Red-black | 左倾红黑树（LLRB），属于红黑树的一种实现 |
 | B+ | 16 阶：内部节点最多 16 个孩子，叶子最多 15 条记录，叶子链连接 |
 
-统一接口位于 `include/trees.h`。集合接受完整 `int` 范围；重复插入与不存在的删除返回 `false`，不改变元素集合。有效树对象必须由 `tree_create` 创建；除 `tree_destroy(NULL)` 外，接口要求传入非空有效对象。内存不足打印错误并退出。底层算法和测试均为 C11；Python 仅用于注释审计和绘图。实现以题目截图的五种树和三种序列要求为依据；未提供的课程专用命名、文件结构或评分规则不作假设。
+统一接口位于 `include/trees.h`。集合接受完整 `int` 范围；重复插入与不存在的删除返回 `false`，不改变元素集合。有效树对象必须由 `tree_create` 创建；除 `tree_destroy(NULL)` 外，接口要求传入非空有效对象。内存不足打印错误并退出。底层算法和测试均为 C11；Python 用于辅助工具和绘图。实现以题目截图的五种树和三种序列要求为依据；未提供的课程专用命名、文件结构或评分规则不作假设。
 
 ## Windows 编译与测试
 
@@ -46,7 +46,6 @@
 ```powershell
 ./build.ps1 -Test
 ./build.ps1 -Stress
-python tools/check_comments.py --output results/comment_coverage.json
 ```
 
 开启 `-std=c11 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Werror -O2`，警告按错误处理。`--stress` 对每种树执行 N=100000 的全部三种序列；普通测试使用 N=5000。非平衡 BST 的有序插入是 O(N²)，逆序删除也可能是 O(N²)，因此压力测试和完整基准需要等待。
@@ -58,9 +57,9 @@ gcc -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror -Iinclude src/trees.c tests/te
 ./build/test_trees.exe
 ```
 
-首次复现先运行 `python -m pip install -r requirements.txt`，然后运行 `./run_experiments.ps1 -Stress`，一次完成编译、压力测试、注释审计、完整性能实验和绘图。快速复现可用 `./run_experiments.ps1 -MaxN 1000 -Repeats 1`；不需要绘图时附加 `-SkipPlots`。每次运行会更新 `results/` 中同名数据和日志，需保留的旧结果请先复制。
+首次复现先运行 `python -m pip install -r requirements.txt`，然后运行 `./run_experiments.ps1 -Stress`，一次完成编译、压力测试、完整性能实验和绘图。快速复现可用 `./run_experiments.ps1 -MaxN 1000 -Repeats 1`；不需要绘图时附加 `-SkipPlots`。每次运行会更新 `results/` 中同名数据和日志，需保留的旧结果请先复制。
 
-Linux/macOS 可使用 `make test`、`make stress`、`make comments`。支持的 GCC/Clang 环境可运行 `make sanitize`；GitHub Actions 在 Linux 上执行 AddressSanitizer、UndefinedBehaviorSanitizer 和泄漏检测。不要把尚未执行的 CI 配置当作已经通过的测试结果。
+Linux/macOS 可使用 `make test`、`make stress`。支持的 GCC/Clang 环境可运行 `make sanitize`；GitHub Actions 在 Linux 上执行 AddressSanitizer、UndefinedBehaviorSanitizer 和泄漏检测。不要把尚未执行的 CI 配置当作已经通过的测试结果。
 
 ## 正确性验证
 
@@ -91,6 +90,6 @@ CSV 字段：`tree,scenario,n,repeat,seed,insert_seconds,delete_seconds,total_se
 
 - `src/trees.c`、`include/trees.h`：五种树及统一接口。
 - `src/benchmark.c`：确定性实验输入与计时输出。
-- `tests/test_trees.c`：正确性与压力测试；`tests/test_comments.py`：独立注释统计回归检查。
-- `tools/`：注释审计、绘图；`results/`：实测数据及交付给报告同学的材料。
-- `.github/workflows/ci.yml`：持续编译、测试、注释比例和内存检查。
+- `tests/test_trees.c`：正确性与压力测试。
+- `tools/`：辅助工具与绘图；`results/`：实测数据及交付给报告同学的材料。
+- `.github/workflows/ci.yml`：持续编译、测试和内存检查。
