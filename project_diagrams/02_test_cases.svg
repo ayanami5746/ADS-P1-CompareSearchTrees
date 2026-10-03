@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-10-03T15:31:07.427487</dc:date>
+    <dc:date>2026-10-03T15:40:06.485852</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -40,7 +40,7 @@ Q 43.2 240.48 43.2 235.44
 L 43.2 134.64 
 Q 43.2 129.6 48.24 129.6 
 z
-" clip-path="url(#pa73afa0ba6)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p9330b45693)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 588.24 129.6 
@@ -53,7 +53,7 @@ Q 583.2 240.48 583.2 235.44
 L 583.2 134.64 
 Q 583.2 129.6 588.24 129.6 
 z
-" clip-path="url(#pa73afa0ba6)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p9330b45693)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 48.24 254.88 
@@ -66,7 +66,7 @@ Q 43.2 365.76 43.2 360.72
 L 43.2 259.92 
 Q 43.2 254.88 48.24 254.88 
 z
-" clip-path="url(#pa73afa0ba6)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p9330b45693)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 588.24 254.88 
@@ -79,7 +79,7 @@ Q 583.2 365.76 583.2 360.72
 L 583.2 259.92 
 Q 583.2 254.88 588.24 254.88 
 z
-" clip-path="url(#pa73afa0ba6)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p9330b45693)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
     <path d="M 48.24 423.36 
@@ -92,7 +92,7 @@ Q 43.2 531.36 43.2 526.32
 L 43.2 428.4 
 Q 43.2 423.36 48.24 423.36 
 z
-" clip-path="url(#pa73afa0ba6)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p9330b45693)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_7">
     <path d="M 408.24 423.36 
@@ -105,7 +105,7 @@ Q 403.2 531.36 403.2 526.32
 L 403.2 428.4 
 Q 403.2 423.36 408.24 423.36 
 z
-" clip-path="url(#pa73afa0ba6)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p9330b45693)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_8">
     <path d="M 768.24 423.36 
@@ -118,7 +118,7 @@ Q 763.2 531.36 763.2 526.32
 L 763.2 428.4 
 Q 763.2 423.36 768.24 423.36 
 z
-" clip-path="url(#pa73afa0ba6)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p9330b45693)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_9">
     <path d="M 48.24 602.64 
@@ -131,7 +131,7 @@ Q 43.2 689.04 43.2 684
 L 43.2 607.68 
 Q 43.2 602.64 48.24 602.64 
 z
-" clip-path="url(#pa73afa0ba6)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p9330b45693)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_10">
     <path d="M 48.24 705.6 
@@ -144,12 +144,12 @@ Q 43.2 777.6 43.2 772.56
 L 43.2 710.64 
 Q 43.2 705.6 48.24 705.6 
 z
-" clip-path="url(#pa73afa0ba6)" style="fill: #f6f8fa; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p9330b45693)" style="fill: #f6f8fa; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="line2d_1">
     <path d="M 43.2 81.36 
 L 1108.8 81.36 
-" clip-path="url(#pa73afa0ba6)" style="fill: none; stroke: #ced8e1; stroke-linecap: square"/>
+" clip-path="url(#p9330b45693)" style="fill: none; stroke: #ced8e1; stroke-linecap: square"/>
    </g>
    <g id="text_1">
     <!-- 测试 Case 与验证流程 -->
@@ -1617,69 +1617,6 @@ z
     </g>
    </g>
    <g id="text_3">
-    <!-- 02 / 02 -->
-    <g style="fill: #617080" transform="translate(1054.965 45.91) scale(0.16 -0.16)">
-     <defs>
-      <path id="MicrosoftYaHei-30" d="M 284 2325 
-Q 284 3606 709 4264 
-Q 1134 4922 1941 4922 
-Q 3478 4922 3478 2441 
-Q 3478 1216 3045 567 
-Q 2613 -81 1831 -81 
-Q 1094 -81 689 534 
-Q 284 1150 284 2325 
-z
-M 909 2353 
-Q 909 425 1888 425 
-Q 2850 425 2850 2384 
-Q 2850 4413 1906 4413 
-Q 909 4413 909 2353 
-z
-" transform="scale(0.015625)"/>
-      <path id="MicrosoftYaHei-32" d="M 2666 3572 
-Q 2666 3963 2419 4186 
-Q 2172 4409 1747 4409 
-Q 1447 4409 1140 4256 
-Q 834 4103 569 3819 
-L 569 4413 
-Q 806 4659 1107 4790 
-Q 1409 4922 1816 4922 
-Q 2472 4922 2872 4570 
-Q 3272 4219 3272 3619 
-Q 3272 3084 3026 2693 
-Q 2781 2303 2188 1894 
-Q 1581 1475 1376 1294 
-Q 1172 1113 1090 947 
-Q 1009 781 1009 544 
-L 3416 544 
-L 3416 0 
-L 372 0 
-L 372 241 
-Q 372 659 486 951 
-Q 600 1244 862 1520 
-Q 1125 1797 1681 2184 
-Q 2250 2584 2458 2886 
-Q 2666 3188 2666 3572 
-z
-" transform="scale(0.015625)"/>
-      <path id="MicrosoftYaHei-2f" d="M 2791 4841 
-L 469 -803 
-L -103 -803 
-L 2219 4841 
-L 2791 4841 
-z
-" transform="scale(0.015625)"/>
-     </defs>
-     <use xlink:href="#MicrosoftYaHei-30"/>
-     <use xlink:href="#MicrosoftYaHei-32" transform="translate(58.642578 0)"/>
-     <use xlink:href="#MicrosoftYaHei-20" transform="translate(117.285156 0)"/>
-     <use xlink:href="#MicrosoftYaHei-2f" transform="translate(146.875 0)"/>
-     <use xlink:href="#MicrosoftYaHei-20" transform="translate(189.599609 0)"/>
-     <use xlink:href="#MicrosoftYaHei-30" transform="translate(219.189453 0)"/>
-     <use xlink:href="#MicrosoftYaHei-32" transform="translate(277.832031 0)"/>
-    </g>
-   </g>
-   <g id="text_4">
     <!-- A  正确性测试  ·  tests/test_trees.c -->
     <g style="fill: #245b88" transform="translate(43.2 111.3175) scale(0.16 -0.16)">
      <defs>
@@ -1731,6 +1668,13 @@ Q 1347 722 1462 575
 Q 1578 428 1847 428 
 Q 2053 428 2206 544 
 L 2206 34 
+z
+" transform="scale(0.015625)"/>
+      <path id="MicrosoftYaHei-2f" d="M 2791 4841 
+L 469 -803 
+L -103 -803 
+L 2219 4841 
+L 2791 4841 
 z
 " transform="scale(0.015625)"/>
       <path id="MicrosoftYaHei-5f" d="M 2869 -1634 
@@ -1817,10 +1761,26 @@ z
      <use xlink:href="#MicrosoftYaHei-63" transform="translate(1517.041016 0)"/>
     </g>
    </g>
-   <g id="text_5">
+   <g id="text_4">
     <!-- 01  边界与集合语义 -->
     <g style="fill: #245b88" transform="translate(57.6 152.31125) scale(0.14 -0.14)">
      <defs>
+      <path id="MicrosoftYaHei-30" d="M 284 2325 
+Q 284 3606 709 4264 
+Q 1134 4922 1941 4922 
+Q 3478 4922 3478 2441 
+Q 3478 1216 3045 567 
+Q 2613 -81 1831 -81 
+Q 1094 -81 689 534 
+Q 284 1150 284 2325 
+z
+M 909 2353 
+Q 909 425 1888 425 
+Q 2850 425 2850 2384 
+Q 2850 4413 1906 4413 
+Q 909 4413 909 2353 
+z
+" transform="scale(0.015625)"/>
       <path id="MicrosoftYaHei-31" d="M 1781 0 
 L 1781 4141 
 Q 1638 3997 1295 3819 
@@ -2132,7 +2092,7 @@ z
      <use xlink:href="#MicrosoftYaHei-4e49" transform="translate(776.464844 0)"/>
     </g>
    </g>
-   <g id="text_6">
+   <g id="text_5">
     <!-- 输入：0、INT_MIN、INT_MAX、±1、±100 -->
     <g style="fill: #22364a" transform="translate(57.6 175.838047) scale(0.115 -0.115)">
      <defs>
@@ -3234,10 +3194,36 @@ z
      <use xlink:href="#MicrosoftYaHei-7528" transform="translate(1346.875 0)"/>
     </g>
    </g>
-   <g id="text_7">
+   <g id="text_6">
     <!-- 02  小规模排列穷举 -->
     <g style="fill: #245b88" transform="translate(597.6 152.31125) scale(0.14 -0.14)">
      <defs>
+      <path id="MicrosoftYaHei-32" d="M 2666 3572 
+Q 2666 3963 2419 4186 
+Q 2172 4409 1747 4409 
+Q 1447 4409 1140 4256 
+Q 834 4103 569 3819 
+L 569 4413 
+Q 806 4659 1107 4790 
+Q 1409 4922 1816 4922 
+Q 2472 4922 2872 4570 
+Q 3272 4219 3272 3619 
+Q 3272 3084 3026 2693 
+Q 2781 2303 2188 1894 
+Q 1581 1475 1376 1294 
+Q 1172 1113 1090 947 
+Q 1009 781 1009 544 
+L 3416 544 
+L 3416 0 
+L 372 0 
+L 372 241 
+Q 372 659 486 951 
+Q 600 1244 862 1520 
+Q 1125 1797 1681 2184 
+Q 2250 2584 2458 2886 
+Q 2666 3188 2666 3572 
+z
+" transform="scale(0.015625)"/>
       <path id="MicrosoftYaHei-5c0f" d="M 1513 3878 
 L 2025 3697 
 Q 1425 1984 625 478 
@@ -3620,7 +3606,7 @@ z
      <use xlink:href="#MicrosoftYaHei-4e3e" transform="translate(776.464844 0)"/>
     </g>
    </g>
-   <g id="text_8">
+   <g id="text_7">
     <!-- 键集合：{0, 1, 2, 3, 4} -->
     <g style="fill: #22364a" transform="translate(597.6 175.512812) scale(0.115 -0.115)">
      <defs>
@@ -4812,7 +4798,7 @@ z
      <use xlink:href="#MicrosoftYaHei-5e8f" transform="translate(1700 0)"/>
     </g>
    </g>
-   <g id="text_9">
+   <g id="text_8">
     <!-- 03  随机混合交叉验证 -->
     <g style="fill: #245b88" transform="translate(57.6 277.59125) scale(0.14 -0.14)">
      <defs>
@@ -5090,7 +5076,7 @@ z
      <use xlink:href="#MicrosoftYaHei-8bc1" transform="translate(876.464844 0)"/>
     </g>
    </g>
-   <g id="text_10">
+   <g id="text_9">
     <!-- 键范围：−1024～1023；插入 / 删除 / 查询 -->
     <g style="fill: #22364a" transform="translate(57.6 300.792813) scale(0.115 -0.115)">
      <defs>
@@ -5917,7 +5903,7 @@ z
      <use xlink:href="#MicrosoftYaHei-57df" transform="translate(1700 0)"/>
     </g>
    </g>
-   <g id="text_11">
+   <g id="text_10">
     <!-- 04  非空销毁与特殊接口 -->
     <g style="fill: #245b88" transform="translate(597.6 277.59125) scale(0.14 -0.14)">
      <defs>
@@ -6346,7 +6332,7 @@ z
      <use xlink:href="#MicrosoftYaHei-53e3" transform="translate(976.464844 0)"/>
     </g>
    </g>
-   <g id="text_12">
+   <g id="text_11">
     <!-- 递增插入 20,000 个键后直接销毁 -->
     <g style="fill: #22364a" transform="translate(597.6 300.792813) scale(0.115 -0.115)">
      <defs>
@@ -7426,7 +7412,7 @@ z
      <use xlink:href="#MicrosoftYaHei-4c" transform="translate(1236.865234 0)"/>
     </g>
    </g>
-   <g id="text_13">
+   <g id="text_12">
     <!-- B  题目要求的三种序列  ·  正确性测试与性能实验均覆盖 -->
     <g style="fill: #245b88" transform="translate(43.2 406.63) scale(0.16 -0.16)">
      <defs>
@@ -7827,7 +7813,7 @@ z
      <use xlink:href="#MicrosoftYaHei-76d6" transform="translate(2364.355469 0)"/>
     </g>
    </g>
-   <g id="text_14">
+   <g id="text_13">
     <!-- Case 1 -->
     <g style="fill: #245b88" transform="translate(57.6 446.07125) scale(0.14 -0.14)">
      <use xlink:href="#MicrosoftYaHei-43"/>
@@ -7838,7 +7824,7 @@ z
      <use xlink:href="#MicrosoftYaHei-31" transform="translate(254.785156 0)"/>
     </g>
    </g>
-   <g id="text_15">
+   <g id="text_14">
     <!-- 递增插入 → 递增删除 -->
     <g style="fill: #22364a" transform="translate(57.6 469.6725) scale(0.12 -0.12)">
      <defs>
@@ -8000,7 +7986,7 @@ z
      <use xlink:href="#MicrosoftYaHei-34" transform="translate(808.007812 0)"/>
     </g>
    </g>
-   <g id="text_16">
+   <g id="text_15">
     <!-- Case 2 -->
     <g style="fill: #245b88" transform="translate(417.6 446.07125) scale(0.14 -0.14)">
      <use xlink:href="#MicrosoftYaHei-43"/>
@@ -8011,7 +7997,7 @@ z
      <use xlink:href="#MicrosoftYaHei-32" transform="translate(254.785156 0)"/>
     </g>
    </g>
-   <g id="text_17">
+   <g id="text_16">
     <!-- 递增插入 → 递减删除 -->
     <g style="fill: #22364a" transform="translate(417.6 469.6725) scale(0.12 -0.12)">
      <defs>
@@ -8141,7 +8127,7 @@ z
      <use xlink:href="#MicrosoftYaHei-30" transform="translate(808.007812 0)"/>
     </g>
    </g>
-   <g id="text_18">
+   <g id="text_17">
     <!-- Case 3 -->
     <g style="fill: #245b88" transform="translate(777.6 446.07125) scale(0.14 -0.14)">
      <use xlink:href="#MicrosoftYaHei-43"/>
@@ -8152,7 +8138,7 @@ z
      <use xlink:href="#MicrosoftYaHei-33" transform="translate(254.785156 0)"/>
     </g>
    </g>
-   <g id="text_19">
+   <g id="text_18">
     <!-- 随机插入 → 随机删除 -->
     <g style="fill: #22364a" transform="translate(777.6 469.6725) scale(0.12 -0.12)">
      <use xlink:href="#MicrosoftYaHei-968f"/>
@@ -8464,7 +8450,7 @@ z
      <use xlink:href="#MicrosoftYaHei-6210" transform="translate(900 0)"/>
     </g>
    </g>
-   <g id="text_20">
+   <g id="text_19">
     <!-- 正确性规模：普通 N = 5,000；- -stress 时 N = 100,000。全部插入后、删除过程中及清空后检查结构。 -->
     <g style="fill: #617080" transform="translate(43.2 552.792813) scale(0.115 -0.115)">
      <defs>
@@ -8895,7 +8881,7 @@ z
      <use xlink:href="#MicrosoftYaHei-3002" transform="translate(4508.830078 0)"/>
     </g>
    </g>
-   <g id="text_21">
+   <g id="text_20">
     <!-- C  性能实验  ·  src/benchmark.c -->
     <g style="fill: #245b88" transform="translate(43.2 586.63) scale(0.16 -0.16)">
      <defs>
@@ -9034,7 +9020,7 @@ z
      <use xlink:href="#MicrosoftYaHei-63" transform="translate(1408.46875 0)"/>
     </g>
    </g>
-   <g id="text_22">
+   <g id="text_21">
     <!-- 5 种树 × 3 类 Case × 5 种规模 × 3 次重复 = 225 条实测记录 -->
     <g style="fill: #245b88" transform="translate(57.6 625.35125) scale(0.14 -0.14)">
      <defs>
@@ -9223,7 +9209,7 @@ z
      <use xlink:href="#MicrosoftYaHei-5f55" transform="translate(2646.630859 0)"/>
     </g>
    </g>
-   <g id="text_23">
+   <g id="text_22">
     <!-- N = 1,000 / 3,000 / 10,000 / 30,000 / 100,000；同轮所有树使用相同输入。 -->
     <g style="fill: #22364a" transform="translate(57.6 648.9525) scale(0.12 -0.12)">
      <defs>
@@ -9779,7 +9765,7 @@ z
      <use xlink:href="#MicrosoftYaHei-3002" transform="translate(3300 0)"/>
     </g>
    </g>
-   <g id="text_24">
+   <g id="text_23">
     <!-- 共同检查标准 -->
     <g style="fill: #245b88" transform="translate(57.6 728.31125) scale(0.14 -0.14)">
      <defs>
@@ -9950,7 +9936,7 @@ z
      <use xlink:href="#MicrosoftYaHei-51c6" transform="translate(500 0)"/>
     </g>
    </g>
-   <g id="text_25">
+   <g id="text_24">
     <!-- 键序与数量；AVL 高度和平衡；红黑树颜色与黑高；B+ 占用率、分隔键、叶子等深及叶子链。 -->
     <g style="fill: #22364a" transform="translate(57.6 751.512812) scale(0.115 -0.115)">
      <defs>
@@ -10942,7 +10928,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pa73afa0ba6">
+  <clipPath id="p9330b45693">
    <rect x="0" y="0" width="1152" height="806.4"/>
   </clipPath>
  </defs>

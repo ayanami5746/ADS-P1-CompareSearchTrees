@@ -26,7 +26,7 @@ def main():
     font = font_manager.FontProperties(fname=str(args.font))
     plt.rcParams['svg.fonttype'] = 'path'
 
-    def canvas(title, subtitle, number):
+    def canvas(title, subtitle):
         fig, ax = plt.subplots(figsize=(16, 11.2))
         fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
         ax.set(xlim=(0, 1600), ylim=(1120, 0))
@@ -34,7 +34,6 @@ def main():
         ax.plot([60, 1540], [113, 113], color=LINE, linewidth=1)
         text(ax, 60, 38, title, 25, BLUE)
         text(ax, 60, 84, subtitle, 12, GRAY)
-        text(ax, 1540, 46, number, 16, GRAY, ha='right')
         return fig, ax
 
     def text(ax, x, y, value, size=13, color=DARK, ha='left'):
@@ -57,7 +56,7 @@ def main():
         fig.savefig(args.output_dir / f'{stem}.svg', facecolor=WHITE)
         plt.close(fig)
 
-    fig, ax = canvas('代码整体结构', '统一接口连接五种搜索树；正确性测试与性能实验分别提供 main() 入口', '01 / 02')
+    fig, ax = canvas('代码整体结构', '统一接口连接五种搜索树；正确性测试与性能实验分别提供 main() 入口')
     box(ax, 60, 140, 720, 125, '正确性测试入口  ·  tests/test_trees.c',
         '生成测试序列 → 调用树接口 → 对照预期结果\n检查返回值、元素数量与结构不变量', PALE)
     box(ax, 820, 140, 720, 125, '性能实验入口  ·  src/benchmark.c',
@@ -91,7 +90,7 @@ def main():
     text(ax, 60, 1044, '阅读顺序：公共接口 → 按树类型分派 → 对应算法 → 结构验证与内存清理', 12, GRAY)
     save(fig, '01_code_structure')
 
-    fig, ax = canvas('测试 Case 与验证流程', '五种树运行相同的测试套件；正确性验证与性能计时分别进行', '02 / 02')
+    fig, ax = canvas('测试 Case 与验证流程', '五种树运行相同的测试套件；正确性验证与性能计时分别进行')
     text(ax, 60, 136, 'A  正确性测试  ·  tests/test_trees.c', 16, BLUE)
     cards = [
         ('01  边界与集合语义', '输入：0、INT_MIN、INT_MAX、±1、±100\n空树查询 / 删除；重复插入 / 删除\n清空后再插入 17，确认可以复用'),

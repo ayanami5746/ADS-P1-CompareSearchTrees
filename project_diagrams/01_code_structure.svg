@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-10-03T15:31:07.150486</dc:date>
+    <dc:date>2026-10-03T15:40:06.222553</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -40,7 +40,7 @@ Q 43.2 190.8 43.2 185.76
 L 43.2 105.84 
 Q 43.2 100.8 48.24 100.8 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p1e71701951)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 595.44 100.8 
@@ -53,27 +53,27 @@ Q 590.4 190.8 590.4 185.76
 L 590.4 105.84 
 Q 590.4 100.8 595.44 100.8 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p1e71701951)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 302.4 192.799951 
 Q 302.4 204.119876 302.4 214.154062 
-" clip-path="url(#pc6ccb71b87)" style="fill: none; stroke: #245b88; stroke-width: 1.15; stroke-linecap: round"/>
+" clip-path="url(#p1e71701951)" style="fill: none; stroke: #245b88; stroke-width: 1.15; stroke-linecap: round"/>
     <path d="M 304.8 209.354062 
 L 302.4 214.154062 
 L 300 209.354062 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #245b88; stroke: #245b88; stroke-width: 1.15; stroke-linecap: round"/>
+" clip-path="url(#p1e71701951)" style="fill: #245b88; stroke: #245b88; stroke-width: 1.15; stroke-linecap: round"/>
    </g>
    <g id="patch_5">
     <path d="M 849.6 192.799951 
 Q 849.6 204.119876 849.6 214.154062 
-" clip-path="url(#pc6ccb71b87)" style="fill: none; stroke: #245b88; stroke-width: 1.15; stroke-linecap: round"/>
+" clip-path="url(#p1e71701951)" style="fill: none; stroke: #245b88; stroke-width: 1.15; stroke-linecap: round"/>
     <path d="M 852 209.354062 
 L 849.6 214.154062 
 L 847.2 209.354062 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #245b88; stroke: #245b88; stroke-width: 1.15; stroke-linecap: round"/>
+" clip-path="url(#p1e71701951)" style="fill: #245b88; stroke: #245b88; stroke-width: 1.15; stroke-linecap: round"/>
    </g>
    <g id="patch_6">
     <path d="M 48.24 219.6 
@@ -86,17 +86,17 @@ Q 43.2 311.04 43.2 306
 L 43.2 224.64 
 Q 43.2 219.6 48.24 219.6 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p1e71701951)" style="fill: #edf4fa; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_7">
     <path d="M 576 313.04127 
 Q 576 321.842994 576 329.35898 
-" clip-path="url(#pc6ccb71b87)" style="fill: none; stroke: #245b88; stroke-width: 1.15; stroke-linecap: round"/>
+" clip-path="url(#p1e71701951)" style="fill: none; stroke: #245b88; stroke-width: 1.15; stroke-linecap: round"/>
     <path d="M 578.4 324.55898 
 L 576 329.35898 
 L 573.6 324.55898 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #245b88; stroke: #245b88; stroke-width: 1.15; stroke-linecap: round"/>
+" clip-path="url(#p1e71701951)" style="fill: #245b88; stroke: #245b88; stroke-width: 1.15; stroke-linecap: round"/>
    </g>
    <g id="patch_8">
     <path d="M 48.24 363.6 
@@ -109,7 +109,7 @@ Q 43.2 478.8 43.2 473.76
 L 43.2 368.64 
 Q 43.2 363.6 48.24 363.6 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p1e71701951)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_9">
     <path d="M 264.24 363.6 
@@ -122,7 +122,7 @@ Q 259.2 478.8 259.2 473.76
 L 259.2 368.64 
 Q 259.2 363.6 264.24 363.6 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p1e71701951)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_10">
     <path d="M 480.24 363.6 
@@ -135,7 +135,7 @@ Q 475.2 478.8 475.2 473.76
 L 475.2 368.64 
 Q 475.2 363.6 480.24 363.6 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p1e71701951)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_11">
     <path d="M 696.24 363.6 
@@ -148,7 +148,7 @@ Q 691.2 478.8 691.2 473.76
 L 691.2 368.64 
 Q 691.2 363.6 696.24 363.6 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p1e71701951)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_12">
     <path d="M 912.24 363.6 
@@ -161,7 +161,7 @@ Q 907.2 478.8 907.2 473.76
 L 907.2 368.64 
 Q 907.2 363.6 912.24 363.6 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p1e71701951)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_13">
     <path d="M 48.24 498.96 
@@ -174,7 +174,7 @@ Q 43.2 597.6 43.2 592.56
 L 43.2 504 
 Q 43.2 498.96 48.24 498.96 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #f6f8fa; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p1e71701951)" style="fill: #f6f8fa; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_14">
     <path d="M 401.04 498.96 
@@ -187,7 +187,7 @@ Q 396 597.6 396 592.56
 L 396 504 
 Q 396 498.96 401.04 498.96 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #f6f8fa; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p1e71701951)" style="fill: #f6f8fa; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_15">
     <path d="M 753.84 498.96 
@@ -200,7 +200,7 @@ Q 748.8 597.6 748.8 592.56
 L 748.8 504 
 Q 748.8 498.96 753.84 498.96 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #f6f8fa; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p1e71701951)" style="fill: #f6f8fa; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_16">
     <path d="M 48.24 642.24 
@@ -213,7 +213,7 @@ Q 43.2 726.48 43.2 721.44
 L 43.2 647.28 
 Q 43.2 642.24 48.24 642.24 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p1e71701951)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="patch_17">
     <path d="M 595.44 642.24 
@@ -226,12 +226,12 @@ Q 590.4 726.48 590.4 721.44
 L 590.4 647.28 
 Q 590.4 642.24 595.44 642.24 
 z
-" clip-path="url(#pc6ccb71b87)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
+" clip-path="url(#p1e71701951)" style="fill: #ffffff; stroke: #ced8e1; stroke-linejoin: miter"/>
    </g>
    <g id="line2d_1">
     <path d="M 43.2 81.36 
 L 1108.8 81.36 
-" clip-path="url(#pc6ccb71b87)" style="fill: none; stroke: #ced8e1; stroke-linecap: square"/>
+" clip-path="url(#p1e71701951)" style="fill: none; stroke: #ced8e1; stroke-linecap: square"/>
    </g>
    <g id="text_1">
     <!-- 代码整体结构 -->
@@ -1971,81 +1971,6 @@ z
     </g>
    </g>
    <g id="text_3">
-    <!-- 01 / 02 -->
-    <g style="fill: #617080" transform="translate(1054.965 45.91) scale(0.16 -0.16)">
-     <defs>
-      <path id="MicrosoftYaHei-30" d="M 284 2325 
-Q 284 3606 709 4264 
-Q 1134 4922 1941 4922 
-Q 3478 4922 3478 2441 
-Q 3478 1216 3045 567 
-Q 2613 -81 1831 -81 
-Q 1094 -81 689 534 
-Q 284 1150 284 2325 
-z
-M 909 2353 
-Q 909 425 1888 425 
-Q 2850 425 2850 2384 
-Q 2850 4413 1906 4413 
-Q 909 4413 909 2353 
-z
-" transform="scale(0.015625)"/>
-      <path id="MicrosoftYaHei-31" d="M 1781 0 
-L 1781 4141 
-Q 1638 3997 1295 3819 
-Q 953 3641 663 3569 
-L 663 4169 
-Q 1047 4275 1484 4508 
-Q 1922 4741 2156 4947 
-L 2388 4947 
-L 2388 0 
-L 1781 0 
-z
-" transform="scale(0.015625)"/>
-      <path id="MicrosoftYaHei-2f" d="M 2791 4841 
-L 469 -803 
-L -103 -803 
-L 2219 4841 
-L 2791 4841 
-z
-" transform="scale(0.015625)"/>
-      <path id="MicrosoftYaHei-32" d="M 2666 3572 
-Q 2666 3963 2419 4186 
-Q 2172 4409 1747 4409 
-Q 1447 4409 1140 4256 
-Q 834 4103 569 3819 
-L 569 4413 
-Q 806 4659 1107 4790 
-Q 1409 4922 1816 4922 
-Q 2472 4922 2872 4570 
-Q 3272 4219 3272 3619 
-Q 3272 3084 3026 2693 
-Q 2781 2303 2188 1894 
-Q 1581 1475 1376 1294 
-Q 1172 1113 1090 947 
-Q 1009 781 1009 544 
-L 3416 544 
-L 3416 0 
-L 372 0 
-L 372 241 
-Q 372 659 486 951 
-Q 600 1244 862 1520 
-Q 1125 1797 1681 2184 
-Q 2250 2584 2458 2886 
-Q 2666 3188 2666 3572 
-z
-" transform="scale(0.015625)"/>
-     </defs>
-     <use xlink:href="#MicrosoftYaHei-30"/>
-     <use xlink:href="#MicrosoftYaHei-31" transform="translate(58.642578 0)"/>
-     <use xlink:href="#MicrosoftYaHei-20" transform="translate(117.285156 0)"/>
-     <use xlink:href="#MicrosoftYaHei-2f" transform="translate(146.875 0)"/>
-     <use xlink:href="#MicrosoftYaHei-20" transform="translate(189.599609 0)"/>
-     <use xlink:href="#MicrosoftYaHei-30" transform="translate(219.189453 0)"/>
-     <use xlink:href="#MicrosoftYaHei-32" transform="translate(277.832031 0)"/>
-    </g>
-   </g>
-   <g id="text_4">
     <!-- 正确性测试入口  ·  tests/test_trees.c -->
     <g style="fill: #245b88" transform="translate(57.6 124.042813) scale(0.14 -0.14)">
      <defs>
@@ -2125,6 +2050,13 @@ Q 2688 466 2298 192
 Q 1909 -81 1291 -81 
 Q 753 -81 353 122 
 L 353 747 
+z
+" transform="scale(0.015625)"/>
+      <path id="MicrosoftYaHei-2f" d="M 2791 4841 
+L 469 -803 
+L -103 -803 
+L 2219 4841 
+L 2791 4841 
 z
 " transform="scale(0.015625)"/>
       <path id="MicrosoftYaHei-5f" d="M 2869 -1634 
@@ -2210,7 +2142,7 @@ z
      <use xlink:href="#MicrosoftYaHei-63" transform="translate(1587.5 0)"/>
     </g>
    </g>
-   <g id="text_5">
+   <g id="text_4">
     <!-- 生成测试序列 → 调用树接口 → 对照预期结果 -->
     <g style="fill: #22364a" transform="translate(57.6 147.1125) scale(0.12 -0.12)">
      <defs>
@@ -3463,7 +3395,7 @@ z
      <use xlink:href="#MicrosoftYaHei-91cf" transform="translate(1500 0)"/>
     </g>
    </g>
-   <g id="text_6">
+   <g id="text_5">
     <!-- 性能实验入口  ·  src/benchmark.c -->
     <g style="fill: #245b88" transform="translate(604.8 123.51125) scale(0.14 -0.14)">
      <defs>
@@ -3556,7 +3488,7 @@ z
      <use xlink:href="#MicrosoftYaHei-63" transform="translate(1482.394531 0)"/>
     </g>
    </g>
-   <g id="text_7">
+   <g id="text_6">
     <!-- 生成相同输入 → 分别计时插入 / 删除 -->
     <g style="fill: #22364a" transform="translate(604.8 147.1125) scale(0.12 -0.12)">
      <defs>
@@ -4613,7 +4545,7 @@ z
      <use xlink:href="#MicrosoftYaHei-5f55" transform="translate(1900 0)"/>
     </g>
    </g>
-   <g id="text_8">
+   <g id="text_7">
     <!-- 统一接口  ·  include/trees.h -->
     <g style="fill: #245b88" transform="translate(57.6 242.31125) scale(0.14 -0.14)">
      <defs>
@@ -4695,7 +4627,7 @@ z
      <use xlink:href="#MicrosoftYaHei-68" transform="translate(1190.373047 0)"/>
     </g>
    </g>
-   <g id="text_9">
+   <g id="text_8">
     <!-- tree_create  /  tree_insert  /  tree_delete  /  tree_contains  /  tree_size  /  tree_validate  /  tree_destroy -->
     <g style="fill: #22364a" transform="translate(57.6 265.9125) scale(0.12 -0.12)">
      <defs>
@@ -5571,7 +5503,7 @@ z
      <use xlink:href="#MicrosoftYaHei-3002" transform="translate(3496.998047 0)"/>
     </g>
    </g>
-   <g id="text_10">
+   <g id="text_9">
     <!-- 算法实现层  ·  src/trees.c -->
     <g style="fill: #245b88" transform="translate(43.2 345.350625) scale(0.15 -0.15)">
      <defs>
@@ -5771,7 +5703,7 @@ z
      <use xlink:href="#MicrosoftYaHei-63" transform="translate(1076.302734 0)"/>
     </g>
    </g>
-   <g id="text_11">
+   <g id="text_10">
     <!-- BST -->
     <g style="fill: #245b88" transform="translate(57.6 386.31125) scale(0.14 -0.14)">
      <defs>
@@ -5839,7 +5771,7 @@ z
      <use xlink:href="#MicrosoftYaHei-54" transform="translate(120.458984 0)"/>
     </g>
    </g>
-   <g id="text_12">
+   <g id="text_11">
     <!-- 迭代查找与更新 -->
     <g style="fill: #22364a" transform="translate(57.6 409.9125) scale(0.12 -0.12)">
      <defs>
@@ -6442,7 +6374,7 @@ z
      <use xlink:href="#MicrosoftYaHei-8861" transform="translate(600 0)"/>
     </g>
    </g>
-   <g id="text_13">
+   <g id="text_12">
     <!-- AVL -->
     <g style="fill: #245b88" transform="translate(273.6 386.31125) scale(0.14 -0.14)">
      <defs>
@@ -6493,7 +6425,7 @@ z
      <use xlink:href="#MicrosoftYaHei-4c" transform="translate(131.863281 0)"/>
     </g>
    </g>
-   <g id="text_14">
+   <g id="text_13">
     <!-- 维护节点高度 -->
     <g style="fill: #22364a" transform="translate(273.6 409.9125) scale(0.12 -0.12)">
      <defs>
@@ -7372,7 +7304,7 @@ z
      <use xlink:href="#MicrosoftYaHei-6eaf" transform="translate(700 0)"/>
     </g>
    </g>
-   <g id="text_15">
+   <g id="text_14">
     <!-- Splay -->
     <g style="fill: #245b88" transform="translate(489.6 386.31125) scale(0.14 -0.14)">
      <defs>
@@ -7411,7 +7343,7 @@ z
      <use xlink:href="#MicrosoftYaHei-79" transform="translate(203.466797 0)"/>
     </g>
    </g>
-   <g id="text_16">
+   <g id="text_15">
     <!-- 自顶向下伸展 -->
     <g style="fill: #22364a" transform="translate(489.6 409.9125) scale(0.12 -0.12)">
      <defs>
@@ -8208,7 +8140,7 @@ z
      <use xlink:href="#MicrosoftYaHei-6811" transform="translate(800 0)"/>
     </g>
    </g>
-   <g id="text_17">
+   <g id="text_16">
     <!-- RedBlack -->
     <g style="fill: #245b88" transform="translate(705.6 386.31125) scale(0.14 -0.14)">
      <defs>
@@ -8251,7 +8183,7 @@ z
      <use xlink:href="#MicrosoftYaHei-6b" transform="translate(377.761719 0)"/>
     </g>
    </g>
-   <g id="text_18">
+   <g id="text_17">
     <!-- 左倾红黑树 LLRB -->
     <g style="fill: #22364a" transform="translate(705.6 409.9125) scale(0.12 -0.12)">
      <defs>
@@ -8951,7 +8883,7 @@ z
      <use xlink:href="#MicrosoftYaHei-675f" transform="translate(900 0)"/>
     </g>
    </g>
-   <g id="text_19">
+   <g id="text_18">
     <!-- BPlus -->
     <g style="fill: #245b88" transform="translate(921.6 386.31125) scale(0.14 -0.14)">
      <defs>
@@ -8983,10 +8915,22 @@ z
      <use xlink:href="#MicrosoftYaHei-73" transform="translate(212.158203 0)"/>
     </g>
    </g>
-   <g id="text_20">
+   <g id="text_19">
     <!-- 16 阶多路树 -->
     <g style="fill: #22364a" transform="translate(921.6 409.9125) scale(0.12 -0.12)">
      <defs>
+      <path id="MicrosoftYaHei-31" d="M 1781 0 
+L 1781 4141 
+Q 1638 3997 1295 3819 
+Q 953 3641 663 3569 
+L 663 4169 
+Q 1047 4275 1484 4508 
+Q 1922 4741 2156 4947 
+L 2388 4947 
+L 2388 0 
+L 1781 0 
+z
+" transform="scale(0.015625)"/>
       <path id="MicrosoftYaHei-36" d="M 3181 4219 
 Q 2803 4413 2391 4413 
 Q 1763 4413 1381 3866 
@@ -9364,7 +9308,7 @@ z
      <use xlink:href="#MicrosoftYaHei-94fe" transform="translate(900 0)"/>
     </g>
    </g>
-   <g id="text_21">
+   <g id="text_20">
     <!-- 基础数据结构 -->
     <g style="fill: #245b88" transform="translate(57.6 521.67125) scale(0.14 -0.14)">
      <defs>
@@ -9572,7 +9516,7 @@ z
      <use xlink:href="#MicrosoftYaHei-6784" transform="translate(500 0)"/>
     </g>
    </g>
-   <g id="text_22">
+   <g id="text_21">
     <!-- Node：四种二叉树共用节点 -->
     <g style="fill: #22364a" transform="translate(57.6 545.2725) scale(0.12 -0.12)">
      <defs>
@@ -9944,7 +9888,7 @@ z
      <use xlink:href="#MicrosoftYaHei-91cf" transform="translate(1598.396484 0)"/>
     </g>
    </g>
-   <g id="text_23">
+   <g id="text_22">
     <!-- 公共基础操作 -->
     <g style="fill: #245b88" transform="translate(410.4 521.67125) scale(0.14 -0.14)">
      <defs>
@@ -9985,7 +9929,7 @@ z
      <use xlink:href="#MicrosoftYaHei-4f5c" transform="translate(500 0)"/>
     </g>
    </g>
-   <g id="text_24">
+   <g id="text_23">
     <!-- 内存分配、左右旋转、二叉查找 -->
     <g style="fill: #22364a" transform="translate(410.4 545.2725) scale(0.12 -0.12)">
      <defs>
@@ -10550,7 +10494,7 @@ z
      <use xlink:href="#MicrosoftYaHei-63" transform="translate(1332.275391 0)"/>
     </g>
    </g>
-   <g id="text_25">
+   <g id="text_24">
     <!-- 验证与资源释放 -->
     <g style="fill: #245b88" transform="translate(763.2 521.67125) scale(0.14 -0.14)">
      <defs>
@@ -10823,7 +10767,7 @@ z
      <use xlink:href="#MicrosoftYaHei-653e" transform="translate(600 0)"/>
     </g>
    </g>
-   <g id="text_26">
+   <g id="text_25">
     <!-- tree_validate：检查各树的结构约束 -->
     <g style="fill: #22364a" transform="translate(763.2 545.74125) scale(0.12 -0.12)">
      <defs>
@@ -11118,7 +11062,7 @@ z
      <use xlink:href="#MicrosoftYaHei-9875" transform="translate(1389.925781 0)"/>
     </g>
    </g>
-   <g id="text_27">
+   <g id="text_26">
     <!-- 运行产物与复现 -->
     <g style="fill: #245b88" transform="translate(43.2 627.590625) scale(0.15 -0.15)">
      <defs>
@@ -11269,7 +11213,7 @@ z
      <use xlink:href="#MicrosoftYaHei-73b0" transform="translate(600 0)"/>
     </g>
    </g>
-   <g id="text_28">
+   <g id="text_27">
     <!-- 测试结果 -->
     <g style="fill: #245b88" transform="translate(57.6 664.95125) scale(0.14 -0.14)">
      <use xlink:href="#MicrosoftYaHei-6d4b"/>
@@ -11278,7 +11222,7 @@ z
      <use xlink:href="#MicrosoftYaHei-679c" transform="translate(300 0)"/>
     </g>
    </g>
-   <g id="text_29">
+   <g id="text_28">
     <!-- PASS / FAIL 与验证记录 -->
     <g style="fill: #22364a" transform="translate(57.6 688.5525) scale(0.12 -0.12)">
      <defs>
@@ -11658,7 +11602,7 @@ z
      <use xlink:href="#MicrosoftYaHei-67e5" transform="translate(1785.693359 0)"/>
     </g>
    </g>
-   <g id="text_30">
+   <g id="text_29">
     <!-- 实验数据与图表 -->
     <g style="fill: #245b88" transform="translate(604.8 664.95125) scale(0.14 -0.14)">
      <defs>
@@ -11771,7 +11715,7 @@ z
      <use xlink:href="#MicrosoftYaHei-8868" transform="translate(600 0)"/>
     </g>
    </g>
-   <g id="text_31">
+   <g id="text_30">
     <!-- benchmark.csv → 绘图脚本 → PNG / SVG -->
     <g style="fill: #22364a" transform="translate(604.8 688.5525) scale(0.12 -0.12)">
      <defs>
@@ -11968,7 +11912,7 @@ z
      <use xlink:href="#MicrosoftYaHei-56fe" transform="translate(2507.357422 0)"/>
     </g>
    </g>
-   <g id="text_32">
+   <g id="text_31">
     <!-- 阅读顺序：公共接口 → 按树类型分派 → 对应算法 → 结构验证与内存清理 -->
     <g style="fill: #617080" transform="translate(43.2 761.2725) scale(0.12 -0.12)">
      <defs>
@@ -12383,7 +12327,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pc6ccb71b87">
+  <clipPath id="p1e71701951">
    <rect x="0" y="0" width="1152" height="806.4"/>
   </clipPath>
  </defs>

@@ -102,4 +102,12 @@ CSV 字段：`tree,scenario,n,repeat,seed,insert_seconds,delete_seconds,total_se
 
 ## 代码与测试说明图
 
-[代码整体结构](project_diagrams/01_code_structure.png) 展示程序入口、统一接口、五种树实现及运行产物；[测试 Case](project_diagrams/02_test_cases.png) 展示正确性测试、三类操作序列和性能实验规模。两张图均在 project_diagrams/ 中提供 PNG 和 SVG，可用于小组讨论与报告。
+代码结构图展示程序入口、统一接口、五种树实现及运行产物。
+
+![代码整体结构](project_diagrams/01_code_structure.png)
+
+测试说明图展示正确性测试、三类操作序列和性能实验规模。
+
+![测试 Case 与验证流程](project_diagrams/02_test_cases.png)
+
+两张图均在 `project_diagrams/` 中提供 PNG 和 SVG，可用于小组讨论与报告。
