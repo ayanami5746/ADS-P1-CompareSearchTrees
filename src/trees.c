@@ -215,7 +215,7 @@ static Node *avl_insert(Node *p, int k, bool *changed) {
     if (!p) { *changed = true; return new_node(k); }
     if (k < p->key) p->left = avl_insert(p->left, k, changed);
     else if (k > p->key) p->right = avl_insert(p->right, k, changed);
-    return balance(p);
+    return *changed ? balance(p) : p; /* Unchanged subtrees need no repair. */
 }
 /* Replace a two-child node with its successor, then repair the removal path. */
 /*
@@ -238,7 +238,7 @@ static Node *avl_delete(Node *p, int k, bool *changed) {
         p->key = q->key;
         p->right = avl_delete(p->right, q->key, changed);
     }
-    return balance(p);
+    return *changed ? balance(p) : p; /* Unchanged subtrees need no repair. */
 }
 
 /* ==================== 5. Splay tree ==================== */
@@ -524,6 +524,7 @@ static Page *bp_insert(Page *p, int k, bool *changed) {
  * Internal pages transfer child pointers instead of record keys.
  * Merging removes one child entry and can underfill the parent.
  * Leaf merging reconnects next links before freeing the right page.
+ * The caller refreshes the parent once, including when no repair is needed.
  */
 static void repair_child(Page *p, int i) {
     Page *q = p->child[i];
@@ -564,7 +565,6 @@ static void repair_child(Page *p, int i) {
         --p->n;
         for (int j = left + 1; j < p->n; ++j) p->child[j] = p->child[j + 1];
     }
-    refresh(p);
 }
 /* Underflow propagates upward at most one page per level. */
 /*
