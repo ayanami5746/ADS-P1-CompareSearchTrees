@@ -17,10 +17,17 @@
     },
     {
       "file": "src/trees.c",
-      "total_lines": 828,
-      "nonblank_lines": 794,
-      "comment_lines": 281,
-      "ratio_all_lines": 0.3393719806763285
+      "total_lines": 864,
+      "nonblank_lines": 836,
+      "comment_lines": 287,
+      "ratio_all_lines": 0.33217592592592593
+    },
+    {
+      "file": "tests/test_lecture.c",
+      "total_lines": 146,
+      "nonblank_lines": 139,
+      "comment_lines": 49,
+      "ratio_all_lines": 0.3356164383561644
     },
     {
       "file": "tests/test_trees.c",
@@ -30,7 +37,7 @@
       "ratio_all_lines": 0.3286384976525822
     }
   ],
-  "total_lines": 1238,
-  "comment_lines": 417,
-  "ratio": 0.3368336025848142
+  "total_lines": 1420,
+  "comment_lines": 472,
+  "ratio": 0.3323943661971831
 }

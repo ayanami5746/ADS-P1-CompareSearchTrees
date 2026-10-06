@@ -1,14 +1,17 @@
 {
-  "source_commit": "3a7bd97bb777650f470ffd32c4694ef55ef16d7e",
+  "source_commit": "ff86faafa94fb8ab11bf964098c2ff4bdd77c8ba",
   "source_sha256": {
-    "src/trees.c": "503761ca390f6dd99d6790a76d42b572c3fe570b1bc804def7c79717df88428f",
+    "src/trees.c": "4ad36616c88dfaa2c9fb3507c5af812468fc2ad10cfcaea9c97fc7c24f214228",
     "src/benchmark.c": "d91bba61057b7694481148dcd3e9c7cfb17634fdbead3a4f21a0981489782901",
-    "tests/test_trees.c": "98d627316ac8b9ae4695daacc0c20d46a9e801825679b34d71b3dc135cd2357b",
+    "tests/test_trees.c": "8f70ed77481786020703459d63c1f2b72e80a50f12043466f24a70898bf23c12",
+    "tests/test_lecture.c": "441e56219e401558b3ca1dada6e220ce8e0de8cfceaac07e4558ecb0537c3d68",
     "include/trees.h": "aeb13afba37d6fd116f0c125aba5869310e5ef6286711d6df90063463ce3d805",
-    "build.ps1": "c49495132988dba040df0757fab01df3d22683278dc83a36f78a5900de1eefc3"
+    "build.ps1": "79e2b045ccd0de08442fa298757abd0346e76ec4d3d9b463ff05fe1c02ba5924",
+    "Makefile": "cbcb774677b119952c86885ff556df2a321e491698d3dda6acd852f335715b9f",
+    "run_experiments.ps1": "01079f7e72f4ff116f528b121726eb9267676eda259e07ec250b31521cd71d29"
   },
-  "started_at_utc": "2026-10-03T07:46:48.5161430Z",
-  "finished_at_utc": "2026-10-03T07:51:37.7522622Z",
+  "started_at_utc": "2026-10-06T05:12:19.7774198Z",
+  "finished_at_utc": "2026-10-06T05:17:32.9213432Z",
   "timezone": "Asia/Shanghai",
   "compiler": "gcc.exe (x86_64-win32-seh-rev2, Built by MinGW-Builds project) 14.2.0",
   "compile_flags": "-std=c11 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Werror -O2 -Iinclude",
@@ -26,5 +29,5 @@
   "expected_measurements": 225,
   "correctness_mode": "--stress",
   "command": "./run_experiments.ps1 -Stress -Repeats 3 -MaxN 100000 -Seed 20261003",
-  "benchmark_sha256": "940942d5229e4b5c07bb98a0d47b43a21669e897686570eac6884146c1d384f2"
+  "benchmark_sha256": "78f0fbe5e68dcf24a7259e4f680bd1c8e823d3e3cdb2d15376015ea42df32941"
 }
