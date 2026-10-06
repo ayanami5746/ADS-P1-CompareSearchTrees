@@ -4,7 +4,7 @@ Run: **2026-10-06 13:42:20 to 2026-10-06 13:47:08 (Asia/Shanghai)**.
 
 ## Source and environment
 
-The programs were rebuilt from [734a463](https://github.com/ayanami5746/ADS-P1-CompareSearchTrees/commit/734a4633d617c3c6efbb3bb0af8233ed738c2f72). This revision uses bottom-up splaying, ordinary red-black repair, AVL-only height updates, and an order-four B+ tree with up to four records per leaf.
+The programs were rebuilt from [734a463](https://github.com/ayanami5746/ADS-P1-CompareSearchTrees/commit/734a4633d617c3c6efbb3bb0af8233ed738c2f72). This revision uses bottom-up splaying, ordinary red-black repair, and an order-four B+ tree with up to four records per leaf.
 
 `run_metadata.json` records the source commit, SHA-256 hashes of the build inputs, run times, machine details, parameters, and raw-data hash. The source hashes refer to the local file bytes used for this build; Git line-ending conversion can change a file hash in another checkout.
 
@@ -20,7 +20,7 @@ The programs were rebuilt from [734a463](https://github.com/ayanami5746/ADS-P1-C
 
 The strict C11 build completed without warnings. All five trees passed the full `--stress` suite; see `correctness.log`. Each tree ran boundary and reuse cases, 14,400 insertion/deletion permutation pairs, 120,000 mixed operations checked against an independent boolean array, all three assignment workloads at N=100,000, and destruction of a populated 20,000-key tree.
 
-The structural regression checks also passed; see `lecture_checks.log`. They checked both directions of all Splay rotation shapes, access and deletion behavior, red-black insertion into a fixed eight-key tree, all mirrored red-black repair cases, the two/three rotation limits for insertion/deletion, and B+ capacity, splitting, borrowing, merging, and root collapse. Test markers confirmed that Splay and red-black rotations did not update AVL heights.
+The structural regression checks also passed; see `lecture_checks.log`. They checked both directions of all Splay rotation shapes, access and deletion behavior, red-black insertion into a fixed eight-key tree, all mirrored red-black repair cases, the two/three rotation limits for insertion/deletion, and B+ capacity, splitting, borrowing, merging, and root collapse.
 
 The benchmark itself checked operation counts and tree invariants after each insertion and deletion phase, outside the timed regions. The repository's CI also runs both test programs under AddressSanitizer and UndefinedBehaviorSanitizer with leak detection; CI status is recorded by GitHub for each commit.
 

@@ -85,8 +85,8 @@ def main():
         box(ax, 60+i*300, 505, 280, 160, name, body, body_size=10.5)
     box(ax, 60, 693, 470, 137, 'Data structures',
         'Node: binary-tree key and links\nPage: B+ storage; Tree: kind, roots, size', '#F6F8FA')
-    box(ax, 550, 693, 470, 137, 'Rotation helpers',
-        'AVL alone updates cached heights.\nSplay / RB repair child and parent links.', '#F6F8FA')
+    box(ax, 550, 693, 470, 137, 'Shared helpers',
+        'Memory allocation and binary lookup\nRotations preserve key order and links.', '#F6F8FA')
     box(ax, 1040, 693, 500, 137, 'Validation and cleanup',
         'tree_validate: check each tree\'s invariants\ntree_destroy: release all nodes or pages', '#F6F8FA')
     text(ax, 60, 855, 'Outputs and reproduction', 15, BLUE)

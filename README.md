@@ -57,8 +57,6 @@ The five implementations share the same set interface, with balancing handled in
 
 B+ insertion splits a page when it overflows: five records or child pointers split into three on the left and two on the right, with splits propagated upward. Deletion borrows from a sibling when possible, otherwise merges pages and collapses a root with one remaining child. The validator checks root occupancy separately from other pages.
 
-`fix_height()` is used **only by AVL balancing and AVL rotation wrappers**. Splay and red-black rotations update links without reading or maintaining heights. Their parent pointers support iterative bottom-up repair, avoiding recursion on a long splay path. The shared binary-node layout includes these pointers for all four binary trees, though BST and AVL do not use them.
-
 ## API behavior
 
 All five trees store distinct `int` keys, including `INT_MIN` and `INT_MAX`. Duplicate insertion and deletion of an absent key return `false`. Splay queries and duplicate insertions may change the shape without changing the set. `tree_size()` counts records, not B+ separator copies.
@@ -95,7 +93,6 @@ The exhaustive suite validates after every update. The mixed suite checks result
 | Splay access to `1` after inserting `1..7`, deletion, misses, and duplicates | Check access-to-root behavior and the predecessor-root join |
 | Red-black insertion of `4` into a fixed eight-key tree | Check the expected root, links, and colors after recoloring and rotations |
 | 30,000 mixed red-black updates | Require all three insertion cases and all four deletion cases on both sides; enforce at most two insertion rotations and three deletion rotations |
-| Height fields set to a test marker | Confirm that Splay and red-black rotations leave AVL metadata untouched |
 | B+ leaf capacity, split, borrow, merge, and root collapse | Check the order-four occupancy rules and separator update |
 
 Structural validation checks more than whether keys can be found:
