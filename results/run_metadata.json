@@ -1,7 +1,7 @@
 {
-  "source_commit": "ff86faafa94fb8ab11bf964098c2ff4bdd77c8ba",
+  "source_commit": "734a4633d617c3c6efbb3bb0af8233ed738c2f72",
   "source_sha256": {
-    "src/trees.c": "4ad36616c88dfaa2c9fb3507c5af812468fc2ad10cfcaea9c97fc7c24f214228",
+    "src/trees.c": "348b3052eb0d7982724c3fabaa6760068985fd2b8983aa2f2718ce3af3e36268",
     "src/benchmark.c": "d91bba61057b7694481148dcd3e9c7cfb17634fdbead3a4f21a0981489782901",
     "tests/test_trees.c": "8f70ed77481786020703459d63c1f2b72e80a50f12043466f24a70898bf23c12",
     "tests/test_lecture.c": "441e56219e401558b3ca1dada6e220ce8e0de8cfceaac07e4558ecb0537c3d68",
@@ -10,8 +10,8 @@
     "Makefile": "cbcb774677b119952c86885ff556df2a321e491698d3dda6acd852f335715b9f",
     "run_experiments.ps1": "01079f7e72f4ff116f528b121726eb9267676eda259e07ec250b31521cd71d29"
   },
-  "started_at_utc": "2026-10-06T05:12:19.7774198Z",
-  "finished_at_utc": "2026-10-06T05:17:32.9213432Z",
+  "started_at_utc": "2026-10-06T05:42:20.4169688Z",
+  "finished_at_utc": "2026-10-06T05:47:08.4044474Z",
   "timezone": "Asia/Shanghai",
   "compiler": "gcc.exe (x86_64-win32-seh-rev2, Built by MinGW-Builds project) 14.2.0",
   "compile_flags": "-std=c11 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Werror -O2 -Iinclude",
@@ -29,5 +29,5 @@
   "expected_measurements": 225,
   "correctness_mode": "--stress",
   "command": "./run_experiments.ps1 -Stress -Repeats 3 -MaxN 100000 -Seed 20261003",
-  "benchmark_sha256": "78f0fbe5e68dcf24a7259e4f680bd1c8e823d3e3cdb2d15376015ea42df32941"
+  "benchmark_sha256": "333f7269c79cb1d7bcf1b6e55165ccd1a314eceb23e5d42636365ada07ae737e"
 }

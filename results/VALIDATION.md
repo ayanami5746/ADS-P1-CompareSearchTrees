@@ -1,10 +1,10 @@
 # Validation record
 
-Run: **2026-10-06 13:12:19 to 2026-10-06 13:17:32 (Asia/Shanghai)**.
+Run: **2026-10-06 13:42:20 to 2026-10-06 13:47:08 (Asia/Shanghai)**.
 
 ## Source and environment
 
-The programs were rebuilt from [ff86faa](https://github.com/ayanami5746/ADS-P1-CompareSearchTrees/commit/ff86faafa94fb8ab11bf964098c2ff4bdd77c8ba). This revision uses bottom-up splaying, ordinary red-black repair, AVL-only height updates, and an order-four B+ tree with up to four records per leaf.
+The programs were rebuilt from [734a463](https://github.com/ayanami5746/ADS-P1-CompareSearchTrees/commit/734a4633d617c3c6efbb3bb0af8233ed738c2f72). This revision uses bottom-up splaying, ordinary red-black repair, AVL-only height updates, and an order-four B+ tree with up to four records per leaf.
 
 `run_metadata.json` records the source commit, SHA-256 hashes of the build inputs, run times, machine details, parameters, and raw-data hash. The source hashes refer to the local file bytes used for this build; Git line-ending conversion can change a file hash in another checkout.
 

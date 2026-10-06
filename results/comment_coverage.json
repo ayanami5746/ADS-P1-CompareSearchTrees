@@ -19,8 +19,8 @@
       "file": "src/trees.c",
       "total_lines": 864,
       "nonblank_lines": 836,
-      "comment_lines": 287,
-      "ratio_all_lines": 0.33217592592592593
+      "comment_lines": 290,
+      "ratio_all_lines": 0.33564814814814814
     },
     {
       "file": "tests/test_lecture.c",
@@ -38,6 +38,6 @@
     }
   ],
   "total_lines": 1420,
-  "comment_lines": 472,
-  "ratio": 0.3323943661971831
+  "comment_lines": 475,
+  "ratio": 0.3345070422535211
 }
