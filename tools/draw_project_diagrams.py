@@ -63,7 +63,7 @@ def main():
     fig, ax = canvas('Code structure', 'Five search trees behind one C interface; tests and benchmarks have separate entry points.')
     box(ax, 60, 140, 720, 125, 'Correctness tests',
         'test_trees.c: compare operations with a reference set.\n'
-        'test_lecture.c: check lecture shapes, colors, and rotation limits.', PALE)
+        'test_lecture.c: check tree shapes, colors, and rotation limits.', PALE)
     box(ax, 820, 140, 720, 125, 'Performance experiment  |  src/benchmark.c',
         'Give each tree the same input; time insertion and deletion.\n'
         'Validate outside the timed regions and write one row per trial.', PALE)
@@ -91,13 +91,13 @@ def main():
         'tree_validate: check each tree\'s invariants\ntree_destroy: release all nodes or pages', '#F6F8FA')
     text(ax, 60, 855, 'Outputs and reproduction', 15, BLUE)
     box(ax, 60, 892, 720, 117, 'Test results',
-        'PASS / FAIL logs and lecture checks\nLocal build scripts and GitHub Actions run the checks.')
+        'PASS / FAIL logs and structural checks\nLocal build scripts and GitHub Actions run the checks.')
     box(ax, 820, 892, 720, 117, 'Measurements and figures',
         'benchmark.csv -> plotting tools -> PNG / SVG\nresults/ holds the data; performance_charts/ holds comparisons.')
     text(ax, 60, 1044, 'Reading order: public interface -> dispatch -> tree algorithm -> validation and cleanup.', 12, GRAY)
     save(fig, '01_code_structure')
 
-    fig, ax = canvas('Test cases and validation', 'Set behavior, lecture-specific checks, and the three assignment workloads.')
+    fig, ax = canvas('Test cases and validation', 'Set behavior, structural regression checks, and the three assignment workloads.')
     text(ax, 60, 136, 'A  Correctness checks', 16, BLUE)
     cards = [
         ('Boundaries and lifecycle', 'Empty trees, duplicates, signed integer limits\n'
@@ -106,8 +106,8 @@ def main():
          '120 insertion orders x 120 deletion orders per tree\nValidate every update; includes the first B+ leaf split'),
         ('Random mixed operations', 'Insert / delete / find; keys from -1024 to 1023\n'
          'Four seeds x 30,000 steps per tree; boolean-array reference\nCheck each step and scan the full range periodically'),
-        ('Lecture-specific checks', 'Splay: all rotation shapes and access-to-root behavior\n'
-         'Red-black: lecture example, all repair cases, rotation limits\nB+: capacity, split, borrow, merge, and root collapse'),
+        ('Structural regression checks', 'Splay: all rotation shapes and access-to-root behavior\n'
+         'Red-black: fixed insertion case, all repair cases, rotation limits\nB+: capacity, split, borrow, merge, and root collapse'),
     ]
     for i, (title, body) in enumerate(cards):
         box(ax, 60+(i%2)*750, 180+(i//2)*174, 730, 154, title, body, PALE, body_size=11)

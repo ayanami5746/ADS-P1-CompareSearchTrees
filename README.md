@@ -11,7 +11,7 @@ On Windows, install GCC and use PowerShell:
 ./build.ps1 -Stress
 ```
 
-The build uses C11, `-O2`, and strict warnings treated as errors. Regular tests use 5,000 keys for each assignment workload; stress tests use 100,000. Both commands also run the lecture-specific checks. Ordered operations on the unbalanced BST can take quadratic time, so a full run takes several minutes.
+The build uses C11, `-O2`, and strict warnings treated as errors. Regular tests use 5,000 keys for each assignment workload; stress tests use 100,000. Both commands also run the structural regression checks. Ordered operations on the unbalanced BST can take quadratic time, so a full run takes several minutes.
 
 To rebuild, test, benchmark, and regenerate both sets of performance charts:
 
@@ -26,7 +26,7 @@ On Linux or macOS, use `make test`, `make stress`, and `make all`. Where the com
 
 ## Code structure
 
-`src/trees.c` is the algorithm library and has no `main()`. The set-model tests, lecture checks, and benchmark have separate entry points. Start with `include/trees.h`, then read the public dispatch functions in section 8 of `src/trees.c`.
+`src/trees.c` is the algorithm library and has no `main()`. The set-model tests, structural regression checks, and benchmark have separate entry points. Start with `include/trees.h`, then read the public dispatch functions in section 8 of `src/trees.c`.
 
 | Section | Responsibility |
 |---|---|
@@ -35,7 +35,7 @@ On Linux or macOS, use `make test`, `make stress`, and `make all`. Where the com
 | 3. Unbalanced BST | Iterative lookup, insertion, and successor-based deletion |
 | 4. AVL tree | Height updates and single or double rotations |
 | 5. Splay tree | Bottom-up splaying, insertion, and deletion by joining subtrees |
-| 6. Red-black tree | Insertion and deletion repair using the lecture cases |
+| 6. Red-black tree | Insertion and deletion repair through recoloring and rotations |
 | 7. B+ tree | Routing, splitting, borrowing, merging, and root changes |
 | 8. Public API and operation dispatch | Select the algorithm and update the element count |
 | 9. Structural validation | Check ordering, counts, and each tree's invariants |
@@ -43,23 +43,21 @@ On Linux or macOS, use `make test`, `make stress`, and `make all`. Where the com
 
 For example, BST insertion follows `tree_insert -> bst_insert -> bst_find_slot/new_node`. B+ deletion follows `tree_delete -> bplus_delete -> bp_delete -> repair_child`. Algorithm helpers are private to the source file. The public layer changes `size` once for each successful insertion or deletion.
 
-## Alignment with the lectures
+## Tree implementations
 
-The implementation follows the supplied `ADS01AVL_Stu(2).ppt` and `ADS02BTree_Stu(2).ppt`. The table below uses their slide numbers. The original decks are not included in this repository.
+The five implementations share the same set interface, with balancing handled inside each tree module.
 
-| Tree | Implementation and lecture reference |
+| Tree | Implementation |
 |---|---|
 | BST | Iterative updates, with successor replacement for a node with two children. No shortcuts for sorted input. |
-| AVL | Empty height is -1 and leaf height is 0. Single and double rotations restore a balance factor in {-1, 0, 1}, following deck 1, slides 4-9. Deletion repairs the path back to the root. |
-| Splay | Bottom-up **zig, zig-zig, and zig-zag**, following deck 1, slide 14. Insert as in a BST and splay the inserted node. Lookup splays the accessed node; a miss splays the last visited node. Deletion follows slide 17: splay the target, remove it, splay the maximum of the left subtree, then attach the right subtree. |
-| Red-black | Ordinary red-black trees, following deck 2, slides 2 and 4-8. Insert a red leaf, then handle a red uncle or inner/outer child. Deletion handles the four sibling/nephew cases and their mirror images. A two-child deletion copies the successor key while retaining the destination node's color. NULL children represent black NIL leaves. |
-| B+ | **Order 4**, one of the choices suggested on deck 2, slide 12. Nonroot internal pages have 2-4 children; nonroot leaves have 2-4 records. Separators copy the smallest key in each child except the first. All records are in linked leaves at the same depth. |
+| AVL | Empty height is -1 and leaf height is 0. Single and double rotations restore a balance factor in {-1, 0, 1}. Deletion repairs the path back to the root. |
+| Splay | Bottom-up **zig, zig-zig, and zig-zag**. Insert as in a BST and splay the inserted node. Lookup splays the accessed node; a miss splays the last visited node. Deletion proceeds as follows: splay the target, remove it, splay the maximum of the left subtree, then attach the right subtree. |
+| Red-black | Ordinary red-black trees. Insert a red leaf, then handle a red uncle or inner/outer child. Deletion handles the four sibling/nephew cases and their mirror images. A two-child deletion copies the successor key while retaining the destination node's color. NULL children represent black NIL leaves. |
+| B+ | **Order 4**. Nonroot internal pages have 2-4 children; nonroot leaves have 2-4 records. Separators copy the smallest key in each child except the first. All records are in linked leaves at the same depth. |
 
-B+ insertion follows the general split-on-overflow algorithm on slide 12: five records or child pointers split into three on the left and two on the right, with splits propagated upward. Slide 11 also illustrates redistribution before splitting; this implementation uses the general algorithm on slide 12. Deletion borrows from a sibling when possible, otherwise merges pages and collapses a root with one remaining child. The validator enforces the root rules on slide 9.
+B+ insertion splits a page when it overflows: five records or child pointers split into three on the left and two on the right, with splits propagated upward. Deletion borrows from a sibling when possible, otherwise merges pages and collapses a root with one remaining child. The validator checks root occupancy separately from other pages.
 
 `fix_height()` is used **only by AVL balancing and AVL rotation wrappers**. Splay and red-black rotations update links without reading or maintaining heights. Their parent pointers support iterative bottom-up repair, avoiding recursion on a long splay path. The shared binary-node layout includes these pointers for all four binary trees, though BST and AVL do not use them.
-
-The previous top-down splay, left-leaning red-black tree, and order-16 B+ configuration have been replaced. The current measurements therefore describe different implementation choices, not just a code reorganization.
 
 ## API behavior
 
@@ -91,11 +89,11 @@ The exhaustive suite validates after every update. The mixed suite checks result
 
 [tests/test_lecture.c](tests/test_lecture.c) adds direct checks of the private structure. It includes the implementation in its own executable, so no test-only interface is exposed to callers and its counters are absent from the benchmark.
 
-| Lecture check | Purpose |
+| Structural check | Purpose |
 |---|---|
 | Both directions of zig, zig-zig, and zig-zag | Check the resulting links, root, and exact rotation count |
 | Splay access to `1` after inserting `1..7`, deletion, misses, and duplicates | Check access-to-root behavior and the predecessor-root join |
-| Red-black insertion of `4` in the slide 4 example | Check the resulting root, links, and colors against the lecture |
+| Red-black insertion of `4` into a fixed eight-key tree | Check the expected root, links, and colors after recoloring and rotations |
 | 30,000 mixed red-black updates | Require all three insertion cases and all four deletion cases on both sides; enforce at most two insertion rotations and three deletion rotations |
 | Height fields set to a test marker | Confirm that Splay and red-black rotations leave AVL metadata untouched |
 | B+ leaf capacity, split, borrow, merge, and root collapse | Check the order-four occupancy rules and separator update |
