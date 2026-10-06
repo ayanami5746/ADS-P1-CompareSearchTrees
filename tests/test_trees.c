@@ -162,7 +162,7 @@ static void enumerate(int *a, int at) {
  * There are 120 insertion orders and 120 deletion orders.
  * Checking after every insertion catches transient balancing errors.
  * Checking after every deletion catches incorrect repair propagation.
- * These small cases exhaust binary-tree shapes but not large B+ splits.
+ * Five keys also trigger the first leaf split in the order-four B+ tree.
  * Random and scenario tests provide the complementary multi-page coverage.
  */
 static void exhaustive(TreeKind kind) {

@@ -14,6 +14,8 @@ try {
         if ($LASTEXITCODE -ne 0) { throw 'Install plot dependencies first: python -m pip install -r requirements.txt; or use -SkipPlots' }
     }
     & ./build.ps1
+    & ./build/test_lecture.exe | Tee-Object results/lecture_checks.log
+    if ($LASTEXITCODE -ne 0) { throw 'Lecture checks failed' }
     $testArguments = @()
     if ($Stress) { $testArguments += '--stress' }
     & ./build/test_trees.exe @testArguments | Tee-Object results/correctness.log
@@ -27,6 +29,8 @@ try {
     if (-not $SkipPlots) {
         & python tools/plot_results.py results/benchmark.csv --output-dir results
         if ($LASTEXITCODE -ne 0) { throw 'Plot generation failed' }
+        & python tools/plot_case_comparisons.py results/benchmark.csv --output-dir performance_charts
+        if ($LASTEXITCODE -ne 0) { throw 'Case plot generation failed' }
     }
     Write-Output 'Reproduction complete. Results are in results/.'
 } finally { Pop-Location }
